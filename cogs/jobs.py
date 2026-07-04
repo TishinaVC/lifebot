@@ -195,8 +195,18 @@ class JobNavView(discord.ui.View):
         )
 
     async def _on_slot(self, interaction: discord.Interaction, job_id: str, slot: int):
-        self.stop()
-        await self.cog._do_set_job_response(interaction, job_id, slot)
+        await interaction.response.defer(ephemeral=True)
+        try:
+            success = await self.cog._do_set_job_response(interaction, job_id, slot)
+        except Exception as e:
+            await interaction.followup.send(f"Error setting job: {e}", ephemeral=True)
+            success = False
+        if success:
+            self.stop()
+            try:
+                await interaction.edit_original_response(content="Job set successfully!", embed=None, view=None)
+            except Exception:
+                pass
 
     async def _back_to_categories(self, interaction: discord.Interaction):
         self.category = None
@@ -284,17 +294,19 @@ class Jobs(commands.Cog):
         await db.quit_player_job(interaction.user.id, slot_num)
         await interaction.response.send_message(embed=success_embed("Job Quit", f"You quit **{job.get('name', pj['job_id'])}** from slot {slot_num}.\n{get_action_text('misc', 'job_quit')}"))
 
-    async def _do_set_job_response(self, interaction: discord.Interaction, job_id: str, slot: int):
-        """Handle job assignment from the interactive JobNavView."""
+    async def _do_set_job_response(self, interaction: discord.Interaction, job_id: str, slot: int) -> bool:
+        """Handle job assignment from the interactive JobNavView.
+        Returns True if job was set successfully, False otherwise.
+        Uses interaction.followup since the interaction is already deferred."""
         guild_id = interaction.guild.id if interaction.guild else 0
         data = await db.get_or_create_user(interaction.user.id, guild_id)
         if job_id not in JOBS:
-            await interaction.response.send_message(embed=error_embed("Invalid Job", "That job doesn't exist."), ephemeral=True)
-            return
+            await interaction.followup.send(embed=error_embed("Invalid Job", "That job doesn't exist."), ephemeral=True)
+            return False
         job = JOBS[job_id]
         if data["level"] < job["min_level"]:
-            await interaction.response.send_message(embed=error_embed("Level Too Low", f"You need **level {job['min_level']}** to work as a {job['name']}."), ephemeral=True)
-            return
+            await interaction.followup.send(embed=error_embed("Level Too Low", f"You need **level {job['min_level']}** to work as a {job['name']}."), ephemeral=True)
+            return False
 
         reqs = JOB_REQUIREMENTS.get(job_id, {})
         stat_reqs = reqs.get("stat_reqs", {})
@@ -307,23 +319,24 @@ class Jobs(commands.Cog):
                     lines.append(f"  {STATS.get(stat, {}).get('name', stat)}: {info['have']}/{info['need']}")
                 for q in missing_quals:
                     lines.append(f"  Missing: {QUALIFICATIONS.get(q, {}).get('name', q)}")
-                await interaction.response.send_message(embed=error_embed("Requirements Not Met", f"You don't meet the requirements for **{job['name']}**:\n" + "\n".join(lines)), ephemeral=True)
-                return
+                await interaction.followup.send(embed=error_embed("Requirements Not Met", f"You don't meet the requirements for **{job['name']}**:\n" + "\n".join(lines)), ephemeral=True)
+                return False
 
         player_jobs = await db.get_player_jobs(interaction.user.id)
         existing = player_jobs.get(slot)
         if existing and existing["job_id"] == job_id:
-            await interaction.response.send_message(embed=error_embed("Already Set", f"You already have this job in slot {slot}."), ephemeral=True)
-            return
+            await interaction.followup.send(embed=error_embed("Already Set", f"You already have this job in slot {slot}."), ephemeral=True)
+            return False
         other_slots = [s for s in [1, 2, 3] if s != slot]
         for other_slot in other_slots:
             other = player_jobs.get(other_slot)
             if other and other["job_id"] == job_id:
-                await interaction.response.send_message(embed=error_embed("Duplicate Job", f"You already have this job in slot {other_slot}."), ephemeral=True)
-                return
+                await interaction.followup.send(embed=error_embed("Duplicate Job", f"You already have this job in slot {other_slot}."), ephemeral=True)
+                return False
 
         await db.set_player_job(interaction.user.id, slot, job_id)
-        await interaction.response.send_message(embed=success_embed("Job Set", f"You are now a **{job['name']}** in slot {slot}!\n{get_action_text('misc', 'job_set', job_name=job['name'])}"))
+        await interaction.followup.send(embed=success_embed("Job Set", f"You are now a **{job['name']}** in slot {slot}!\n{get_action_text('misc', 'job_set', job_name=job['name'])}"))
+        return True
 
     @app_commands.command(name="work", description="Work at your job — complete a minigame to earn money!")
     @app_commands.choices(slot=_SLOT_CHOICES)
