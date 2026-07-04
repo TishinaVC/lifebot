@@ -98,6 +98,9 @@ class JobNavView(discord.ui.View):
         self.add_item(back_btn)
 
     async def _on_category(self, interaction: discord.Interaction):
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            return
         self.category = interaction.data["values"][0]
         self._add_subcategory_select()
         await interaction.response.edit_message(
@@ -106,6 +109,9 @@ class JobNavView(discord.ui.View):
         )
 
     async def _on_subcategory(self, interaction: discord.Interaction):
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            return
         self.subcategory = interaction.data["values"][0]
         await self._show_jobs(interaction)
 
@@ -114,7 +120,6 @@ class JobNavView(discord.ui.View):
         if not jobs:
             await interaction.response.edit_message(content="No jobs in this subcategory.", embed=None, view=None)
             return
-
         cat_info = JOB_CATEGORIES.get(self.category, {})
         sub_info = get_subcategories(self.category).get(self.subcategory, {})
         embed = info_embed(
@@ -169,6 +174,9 @@ class JobNavView(discord.ui.View):
         await interaction.response.edit_message(embed=embed, content=None, view=self)
 
     async def _on_job_select(self, interaction: discord.Interaction):
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            return
         job_id = interaction.data["values"][0]
         job = JOBS.get(job_id, {})
 
@@ -195,6 +203,9 @@ class JobNavView(discord.ui.View):
         )
 
     async def _on_slot(self, interaction: discord.Interaction, job_id: str, slot: int):
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            return
         await interaction.response.defer(ephemeral=True)
         try:
             success = await self.cog._do_set_job_response(interaction, job_id, slot)
@@ -209,6 +220,9 @@ class JobNavView(discord.ui.View):
                 pass
 
     async def _back_to_categories(self, interaction: discord.Interaction):
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            return
         self.category = None
         self.subcategory = None
         self._add_category_select()
@@ -218,6 +232,9 @@ class JobNavView(discord.ui.View):
         )
 
     async def _back_to_subcategories(self, interaction: discord.Interaction):
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            return
         self.subcategory = None
         self._add_subcategory_select()
         await interaction.response.edit_message(
@@ -226,13 +243,16 @@ class JobNavView(discord.ui.View):
         )
 
     async def _cancel(self, interaction: discord.Interaction):
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            return
         self.stop()
         await interaction.response.edit_message(content="Cancelled.", embed=None, view=None)
 
+    async def on_timeout(self):
+        self.clear_items()
+
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
-        if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
-            return False
         return True
 
 
