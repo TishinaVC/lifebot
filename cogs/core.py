@@ -1,12 +1,17 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
+import os
+import aiohttp
 import database as db
-from utils.embeds import stats_bar, format_money
+from utils.embeds import stats_bar, format_money, info_embed, success_embed, error_embed
 from config import (
     HOUSING_TIERS, TOOLS, CLOTHING, POSSESSIONS, BUFF_TYPES,
     FACTIONS, TIME_PERIODS, WEATHER_STATES, JOBS,
 )
+
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
+GITHUB_REPO = os.getenv("GITHUB_REPO", "TishinaVC/lifebot")
 
 
 class Core(commands.Cog):
@@ -43,7 +48,7 @@ class Core(commands.Cog):
             "🗺️ World": "`/locations` `/travel` `/npc` (talk/trade/quest/complete) `/world` (overview/npc/location)",
             "🍳 Cooking & Buffs": "`/cook` `/cookbook` `/buffs`",
             "⚖️ Reputation": "`/reputation`",
-            "👤 Profile": "`/profile` `/ping` `/reset`",
+            "👤 Profile": "`/profile` `/ping` `/reset` `/feedback`",
         }
         for category, commands_list in categories.items():
             embed.add_field(name=category, value=commands_list, inline=False)
@@ -190,6 +195,67 @@ class Core(commands.Cog):
             content=f"⚠️ **WARNING**: This will permanently delete all your progress including money, level, items, pets, and stats. Are you sure?",
             view=view,
         )
+
+    # ─── /feedback — Submit anonymous feedback as a GitHub issue ───
+    @app_commands.command(name="feedback", description="Submit anonymous feedback or a feature request")
+    @app_commands.describe(feedback="Your feedback or feature request (no personal info needed)")
+    async def feedback(self, interaction: discord.Interaction, feedback: str):
+        if len(feedback) < 5:
+            await interaction.response.send_message(
+                embed=error_embed("Too Short", "Please provide at least a few words of feedback."),
+                ephemeral=True,
+            )
+            return
+        if len(feedback) > 1000:
+            await interaction.response.send_message(
+                embed=error_embed("Too Long", "Please keep feedback under 1000 characters."),
+                ephemeral=True,
+            )
+            return
+
+        await interaction.response.defer(ephemeral=True)
+
+        if not GITHUB_TOKEN:
+            await interaction.followup.send(
+                embed=error_embed("Not Configured", "Feedback is not set up yet. Contact the bot owner."),
+                ephemeral=True,
+            )
+            return
+
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    f"https://api.github.com/repos/{GITHUB_REPO}/issues",
+                    headers={
+                        "Authorization": f"token {GITHUB_TOKEN}",
+                        "Accept": "application/vnd.github.v3+json",
+                    },
+                    json={
+                        "title": f"User Feedback: {feedback[:80]}{'...' if len(feedback) > 80 else ''}",
+                        "body": f"**Feedback submitted via `/feedback` command**\n\n> {feedback}\n\n---\n_Submitted anonymously from Discord_",
+                        "labels": ["user-feedback"],
+                    },
+                ) as resp:
+                    if resp.status == 201:
+                        data = await resp.json()
+                        issue_url = data.get("html_url", "")
+                        await interaction.followup.send(
+                            embed=success_embed(
+                                "✅ Feedback Submitted",
+                                f"Thank you! Your feedback has been recorded. The developers will review it.\n\n[View on GitHub]({issue_url})",
+                            ),
+                            ephemeral=True,
+                        )
+                    else:
+                        await interaction.followup.send(
+                            embed=error_embed("Error", "Could not submit feedback. Please try again later."),
+                            ephemeral=True,
+                        )
+        except Exception as e:
+            await interaction.followup.send(
+                embed=error_embed("Error", f"Something went wrong: {e}"),
+                ephemeral=True,
+            )
 
 
 async def setup(bot):
