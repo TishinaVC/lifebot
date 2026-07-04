@@ -1,0 +1,2602 @@
+{
+  "beggar": {
+    "name": "\ud83e\uddce Beggar",
+    "category": "entry",
+    "subcategory": "street",
+    "description": "Beg on the streets for spare change.",
+    "missing": [
+      "timing",
+      "match_pairs"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "busker": {
+    "name": "\ud83c\udfb8 Street Busker",
+    "category": "entry",
+    "subcategory": "street",
+    "description": "Play music on the corner for tips.",
+    "missing": [
+      "sequence",
+      "quick_pick"
+    ],
+    "existing": [
+      "timing"
+    ]
+  },
+  "leafleter": {
+    "name": "\ud83d\udccb Leaflet Distributor",
+    "category": "entry",
+    "subcategory": "street",
+    "description": "Hand out flyers on busy streets.",
+    "missing": [
+      "memory",
+      "quick_pick"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "window_washer": {
+    "name": "\ud83e\ude9f Window Washer",
+    "category": "entry",
+    "subcategory": "cleaning",
+    "description": "Wash shop windows for small fees.",
+    "missing": [
+      "memory",
+      "timing"
+    ],
+    "existing": [
+      "speed_run"
+    ]
+  },
+  "dog_walker": {
+    "name": "\ud83d\udc15 Dog Walker",
+    "category": "entry",
+    "subcategory": "helper",
+    "description": "Walk dogs for busy pet owners.",
+    "missing": [
+      "sort",
+      "route_plan"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "recycler": {
+    "name": "\u267b\ufe0f Recycler",
+    "category": "entry",
+    "subcategory": "cleaning",
+    "description": "Collect cans and bottles for recycling money.",
+    "missing": [
+      "speed_run",
+      "timing"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "shoe_shiner": {
+    "name": "\ud83d\udc5e Shoe Shiner",
+    "category": "entry",
+    "subcategory": "street",
+    "description": "Shine shoes at the train station.",
+    "missing": [
+      "timing",
+      "memory"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "newspaper": {
+    "name": "\ud83d\udcf0 Paper Round",
+    "category": "entry",
+    "subcategory": "street",
+    "description": "Deliver newspapers early mornings.",
+    "missing": [
+      "quick_pick",
+      "memory"
+    ],
+    "existing": [
+      "route_plan"
+    ]
+  },
+  "car_wash": {
+    "name": "\ud83d\udebf Car Wash Attendant",
+    "category": "entry",
+    "subcategory": "cleaning",
+    "description": "Wash cars by hand at a local car wash.",
+    "missing": [
+      "speed_run",
+      "memory"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "trolley": {
+    "name": "\ud83d\uded2 Trolley Collector",
+    "category": "entry",
+    "subcategory": "helper",
+    "description": "Collect shopping trolleys from the parking lot.",
+    "missing": [
+      "sequence",
+      "timing"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "plant_waterer": {
+    "name": "\ud83e\udeb4 Plant Waterer",
+    "category": "entry",
+    "subcategory": "cleaning",
+    "description": "Water office plants for small businesses.",
+    "missing": [
+      "sort",
+      "speed_run"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "litter_picker": {
+    "name": "\ud83d\uddd1\ufe0f Litter Picker",
+    "category": "entry",
+    "subcategory": "cleaning",
+    "description": "Pick up litter in parks and public spaces.",
+    "missing": [
+      "memory",
+      "sequence"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "sign_holder": {
+    "name": "\ud83e\udea7 Sign Holder",
+    "category": "entry",
+    "subcategory": "street",
+    "description": "Hold advertising signs on street corners.",
+    "missing": [
+      "sequence",
+      "sort"
+    ],
+    "existing": [
+      "timing"
+    ]
+  },
+  "survey_taker": {
+    "name": "\ud83d\udcdd Survey Taker",
+    "category": "entry",
+    "subcategory": "street",
+    "description": "Conduct street surveys for market research.",
+    "missing": [
+      "timing",
+      "speed_run"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "moving_helper": {
+    "name": "\ud83d\udce6 Moving Helper",
+    "category": "entry",
+    "subcategory": "helper",
+    "description": "Help people move furniture and boxes.",
+    "missing": [
+      "sort",
+      "quick_pick"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "ticket_tearer": {
+    "name": "\ud83c\udf9f\ufe0f Ticket Tearer",
+    "category": "entry",
+    "subcategory": "helper",
+    "description": "Tear tickets at the cinema entrance.",
+    "missing": [
+      "sequence",
+      "match_pairs"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "ice_cream": {
+    "name": "\ud83c\udf66 Ice Cream Vendor",
+    "category": "entry",
+    "subcategory": "helper",
+    "description": "Sell ice cream from a cart in the park.",
+    "missing": [
+      "match_pairs",
+      "timing"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "balloon_seller": {
+    "name": "\ud83c\udf88 Balloon Seller",
+    "category": "entry",
+    "subcategory": "street",
+    "description": "Sell balloons at fairs and events.",
+    "missing": [
+      "quick_pick",
+      "sort"
+    ],
+    "existing": [
+      "memory"
+    ]
+  },
+  "parking_attend": {
+    "name": "\ud83c\udd7f\ufe0f Parking Attendant",
+    "category": "entry",
+    "subcategory": "helper",
+    "description": "Collect parking fees and issue tickets.",
+    "missing": [
+      "memory",
+      "timing"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "garden_helper": {
+    "name": "\ud83c\udf31 Garden Helper",
+    "category": "entry",
+    "subcategory": "helper",
+    "description": "Pull weeds and help gardeners.",
+    "missing": [
+      "match_pairs",
+      "sequence"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "shelf_stocker": {
+    "name": "\ud83d\udecd\ufe0f Shelf Stocker",
+    "category": "entry",
+    "subcategory": "helper",
+    "description": "Stock shelves at the supermarket.",
+    "missing": [
+      "sequence",
+      "match_pairs"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "janitor": {
+    "name": "\ud83e\uddf9 Janitor",
+    "category": "entry",
+    "subcategory": "cleaning",
+    "description": "Clean floors and empty trash bins.",
+    "missing": [
+      "memory",
+      "route_plan"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "laundry": {
+    "name": "\ud83d\udc55 Laundry Attendant",
+    "category": "entry",
+    "subcategory": "cleaning",
+    "description": "Wash, dry, and fold laundry at a laundromat.",
+    "missing": [
+      "memory",
+      "timing"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "food_sample": {
+    "name": "\ud83c\udf7d\ufe0f Food Sample Giver",
+    "category": "entry",
+    "subcategory": "helper",
+    "description": "Hand out free food samples at the mall.",
+    "missing": [
+      "memory",
+      "timing"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "cart_pusher": {
+    "name": "\ud83d\uded2 Cart Pusher",
+    "category": "entry",
+    "subcategory": "helper",
+    "description": "Push carts at the market for customers.",
+    "missing": [
+      "quick_pick",
+      "sort"
+    ],
+    "existing": [
+      "speed_run"
+    ]
+  },
+  "barista": {
+    "name": "\u2615 Barista",
+    "category": "service",
+    "subcategory": "beverage",
+    "description": "Brew coffee and serve customers.",
+    "missing": [
+      "shift_sim",
+      "match_pairs"
+    ],
+    "existing": [
+      "recipe_build"
+    ]
+  },
+  "chef": {
+    "name": "\ud83d\udc68\u200d\ud83c\udf73 Chef",
+    "category": "service",
+    "subcategory": "kitchen",
+    "description": "Cook meals at a fancy restaurant.",
+    "missing": [
+      "quick_pick",
+      "speed_run"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "waiter": {
+    "name": "\ud83e\udd35 Waiter",
+    "category": "service",
+    "subcategory": "front",
+    "description": "Serve food and take orders at a restaurant.",
+    "missing": [
+      "match_pairs",
+      "shift_sim"
+    ],
+    "existing": [
+      "memory"
+    ]
+  },
+  "bartender": {
+    "name": "\ud83c\udf78 Bartender",
+    "category": "service",
+    "subcategory": "beverage",
+    "description": "Mix drinks at a busy bar.",
+    "missing": [
+      "match_pairs",
+      "sequence"
+    ],
+    "existing": [
+      "recipe_build"
+    ]
+  },
+  "fast_food": {
+    "name": "\ud83c\udf54 Fast Food Worker",
+    "category": "service",
+    "subcategory": "front",
+    "description": "Flip burgers and take orders at a drive-thru.",
+    "missing": [
+      "multi_stage",
+      "sort"
+    ],
+    "existing": [
+      "speed_run"
+    ]
+  },
+  "sushi_chef": {
+    "name": "\ud83c\udf63 Sushi Chef",
+    "category": "service",
+    "subcategory": "kitchen",
+    "description": "Craft delicate sushi rolls with precision.",
+    "missing": [
+      "speed_run",
+      "multi_stage"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "pastry_chef": {
+    "name": "\ud83e\uddc1 Pastry Chef",
+    "category": "service",
+    "subcategory": "kitchen",
+    "description": "Bake pastries, cakes, and desserts.",
+    "missing": [
+      "quick_pick",
+      "match_pairs"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "sommelier": {
+    "name": "\ud83c\udf77 Sommelier",
+    "category": "service",
+    "subcategory": "beverage",
+    "description": "Pair wines with fine dining experiences.",
+    "missing": [
+      "speed_run",
+      "recipe_build"
+    ],
+    "existing": [
+      "match_pairs"
+    ]
+  },
+  "food_truck": {
+    "name": "\ud83d\ude9a Food Truck Owner",
+    "category": "service",
+    "subcategory": "front",
+    "description": "Run your own food truck on the streets.",
+    "missing": [
+      "sort",
+      "multi_stage"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "caterer": {
+    "name": "\ud83c\udf71 Caterer",
+    "category": "service",
+    "subcategory": "kitchen",
+    "description": "Prepare and deliver food for events.",
+    "missing": [
+      "sequence",
+      "quick_pick"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "butcher": {
+    "name": "\ud83e\udd69 Butcher",
+    "category": "service",
+    "subcategory": "kitchen",
+    "description": "Cut and prepare meat for customers.",
+    "missing": [
+      "recipe_build",
+      "memory"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "baker": {
+    "name": "\ud83e\udd56 Baker",
+    "category": "service",
+    "subcategory": "kitchen",
+    "description": "Bake fresh bread every morning.",
+    "missing": [
+      "multi_stage",
+      "sort"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "host": {
+    "name": "\ud83c\udfa9 Restaurant Host",
+    "category": "service",
+    "subcategory": "front",
+    "description": "Greet guests and manage reservations.",
+    "missing": [
+      "sequence",
+      "match_pairs"
+    ],
+    "existing": [
+      "memory"
+    ]
+  },
+  "barista_master": {
+    "name": "\u2615 Master Barista",
+    "category": "service",
+    "subcategory": "beverage",
+    "description": "Craft award-winning latte art and brews.",
+    "missing": [
+      "speed_run",
+      "sequence"
+    ],
+    "existing": [
+      "recipe_build"
+    ]
+  },
+  "sous_chef": {
+    "name": "\ud83d\udd2a Sous Chef",
+    "category": "service",
+    "subcategory": "kitchen",
+    "description": "Second-in-command in a professional kitchen.",
+    "missing": [
+      "sort",
+      "match_pairs"
+    ],
+    "existing": [
+      "multi_stage"
+    ]
+  },
+  "nutritionist": {
+    "name": "\ud83e\udd57 Nutritionist",
+    "category": "service",
+    "subcategory": "specialty",
+    "description": "Plan meals and advise clients on healthy eating.",
+    "missing": [
+      "match_pairs",
+      "multi_stage"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "food_critic": {
+    "name": "\u270d\ufe0f Food Critic",
+    "category": "service",
+    "subcategory": "specialty",
+    "description": "Review restaurants for a food magazine.",
+    "missing": [
+      "recipe_build",
+      "match_pairs"
+    ],
+    "existing": [
+      "spot_error"
+    ]
+  },
+  "hotel_manager": {
+    "name": "\ud83c\udfe8 Hotel Manager",
+    "category": "service",
+    "subcategory": "management",
+    "description": "Manage a luxury hotel and its staff.",
+    "missing": [
+      "memory",
+      "match_pairs"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "event_planner": {
+    "name": "\ud83c\udf89 Event Planner",
+    "category": "service",
+    "subcategory": "management",
+    "description": "Plan weddings, parties, and corporate events.",
+    "missing": [
+      "memory",
+      "match_pairs"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "sommelier_master": {
+    "name": "\ud83c\udf7e Master Sommelier",
+    "category": "service",
+    "subcategory": "beverage",
+    "description": "Top-tier wine expert at a Michelin restaurant.",
+    "missing": [
+      "recipe_build",
+      "memory"
+    ],
+    "existing": [
+      "match_pairs"
+    ]
+  },
+  "mixologist": {
+    "name": "\ud83c\udf79 Mixologist",
+    "category": "service",
+    "subcategory": "beverage",
+    "description": "Create innovative cocktail recipes.",
+    "missing": [
+      "match_pairs",
+      "sort"
+    ],
+    "existing": [
+      "recipe_build"
+    ]
+  },
+  "chocolatier": {
+    "name": "\ud83c\udf6b Chocolatier",
+    "category": "service",
+    "subcategory": "specialty",
+    "description": "Craft artisan chocolates and truffles.",
+    "missing": [
+      "speed_run",
+      "shift_sim"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "teasomm": {
+    "name": "\ud83c\udf75 Tea Sommelier",
+    "category": "service",
+    "subcategory": "beverage",
+    "description": "Curate and serve premium teas.",
+    "missing": [
+      "sequence",
+      "speed_run"
+    ],
+    "existing": [
+      "match_pairs"
+    ]
+  },
+  "private_chef": {
+    "name": "\ud83c\udf73 Private Chef",
+    "category": "service",
+    "subcategory": "kitchen",
+    "description": "Cook exclusively for wealthy clients.",
+    "missing": [
+      "sort",
+      "shift_sim"
+    ],
+    "existing": [
+      "multi_stage"
+    ]
+  },
+  "restaurateur": {
+    "name": "\ud83c\udf7d\ufe0f Restaurateur",
+    "category": "service",
+    "subcategory": "management",
+    "description": "Own and operate your own restaurant empire.",
+    "missing": [
+      "match_pairs",
+      "sequence"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "mechanic": {
+    "name": "\ud83d\udd27 Mechanic",
+    "category": "trades",
+    "subcategory": "skilled",
+    "description": "Fix cars in the auto shop.",
+    "missing": [
+      "pattern",
+      "precision"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "electrician": {
+    "name": "\u26a1 Electrician",
+    "category": "trades",
+    "subcategory": "skilled",
+    "description": "Wire buildings and fix electrical systems.",
+    "missing": [
+      "pattern",
+      "combo_lock"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "plumber": {
+    "name": "\ud83d\udebf Plumber",
+    "category": "trades",
+    "subcategory": "skilled",
+    "description": "Fix pipes and plumbing systems.",
+    "missing": [
+      "speed_run",
+      "combo_lock"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "carpenter": {
+    "name": "\ud83e\ude9a Carpenter",
+    "category": "trades",
+    "subcategory": "skilled",
+    "description": "Build furniture and wooden structures.",
+    "missing": [
+      "combo_lock",
+      "precision"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "welder": {
+    "name": "\ud83d\udd25 Welder",
+    "category": "trades",
+    "subcategory": "skilled",
+    "description": "Fuse metal with extreme heat and precision.",
+    "missing": [
+      "shift_sim",
+      "precision"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "construction": {
+    "name": "\ud83c\udfd7\ufe0f Construction Worker",
+    "category": "trades",
+    "subcategory": "construction",
+    "description": "Build houses and commercial buildings.",
+    "missing": [
+      "speed_run",
+      "shift_sim"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "roofer": {
+    "name": "\ud83c\udfe0 Roofer",
+    "category": "trades",
+    "subcategory": "construction",
+    "description": "Install and repair roofs in all weather.",
+    "missing": [
+      "sort",
+      "pattern"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "painter": {
+    "name": "\ud83c\udfa8 House Painter",
+    "category": "trades",
+    "subcategory": "construction",
+    "description": "Paint interiors and exteriors of buildings.",
+    "missing": [
+      "precision",
+      "assembly"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "mason": {
+    "name": "\ud83e\uddf1 Mason",
+    "category": "trades",
+    "subcategory": "construction",
+    "description": "Lay bricks and stone for walls and buildings.",
+    "missing": [
+      "shift_sim",
+      "precision"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "tiler": {
+    "name": "\ud83d\udd32 Tiler",
+    "category": "trades",
+    "subcategory": "construction",
+    "description": "Install tiles on floors and walls.",
+    "missing": [
+      "sequence",
+      "speed_run"
+    ],
+    "existing": [
+      "pattern"
+    ]
+  },
+  "insulator": {
+    "name": "\ud83e\uddca Insulator",
+    "category": "trades",
+    "subcategory": "construction",
+    "description": "Install insulation in buildings.",
+    "missing": [
+      "shift_sim",
+      "speed_run"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "glazier": {
+    "name": "\ud83e\ude9f Glazier",
+    "category": "trades",
+    "subcategory": "skilled",
+    "description": "Cut and install glass for windows.",
+    "missing": [
+      "sequence",
+      "sort"
+    ],
+    "existing": [
+      "precision"
+    ]
+  },
+  "hvac": {
+    "name": "\u2744\ufe0f HVAC Technician",
+    "category": "trades",
+    "subcategory": "skilled",
+    "description": "Install and repair heating and cooling systems.",
+    "missing": [
+      "speed_run",
+      "precision"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "landscaper": {
+    "name": "\ud83c\udf33 Landscaper",
+    "category": "trades",
+    "subcategory": "outdoor",
+    "description": "Design and maintain outdoor spaces.",
+    "missing": [
+      "shift_sim",
+      "pattern"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "foreman": {
+    "name": "\ud83d\udc77 Foreman",
+    "category": "trades",
+    "subcategory": "management",
+    "description": "Supervise construction crews on site.",
+    "missing": [
+      "assembly",
+      "pattern"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "surveyor": {
+    "name": "\ud83d\udcd0 Surveyor",
+    "category": "trades",
+    "subcategory": "management",
+    "description": "Measure land and map construction sites.",
+    "missing": [
+      "speed_run",
+      "sequence"
+    ],
+    "existing": [
+      "precision"
+    ]
+  },
+  "demolition": {
+    "name": "\ud83d\udca5 Demolition Worker",
+    "category": "trades",
+    "subcategory": "heavy",
+    "description": "Tear down old buildings safely.",
+    "missing": [
+      "speed_run",
+      "precision"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "scaffolder": {
+    "name": "\ud83e\ude9c Scaffolder",
+    "category": "trades",
+    "subcategory": "construction",
+    "description": "Build temporary structures for construction.",
+    "missing": [
+      "sort",
+      "shift_sim"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "floor_layer": {
+    "name": "\ud83e\udeb5 Floor Layer",
+    "category": "trades",
+    "subcategory": "construction",
+    "description": "Install hardwood, carpet, and tile flooring.",
+    "missing": [
+      "sort",
+      "assembly"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "locksmith": {
+    "name": "\ud83d\udd11 Locksmith",
+    "category": "trades",
+    "subcategory": "skilled",
+    "description": "Pick locks and cut keys for clients.",
+    "missing": [
+      "sort",
+      "shift_sim"
+    ],
+    "existing": [
+      "combo_lock"
+    ]
+  },
+  "heavy_equipment": {
+    "name": "\ud83d\ude9c Heavy Equipment Op",
+    "category": "trades",
+    "subcategory": "heavy",
+    "description": "Operate cranes, bulldozers, and excavators.",
+    "missing": [
+      "sort",
+      "pattern"
+    ],
+    "existing": [
+      "precision"
+    ]
+  },
+  "steelworker": {
+    "name": "\ud83c\udfd7\ufe0f Steelworker",
+    "category": "trades",
+    "subcategory": "heavy",
+    "description": "Work with steel beams on skyscrapers.",
+    "missing": [
+      "precision",
+      "speed_run"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "elevator_fix": {
+    "name": "\ud83d\uded7 Elevator Mechanic",
+    "category": "trades",
+    "subcategory": "heavy",
+    "description": "Repair and install elevators.",
+    "missing": [
+      "pattern",
+      "assembly"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "solar_installer": {
+    "name": "\u2600\ufe0f Solar Panel Installer",
+    "category": "trades",
+    "subcategory": "heavy",
+    "description": "Install solar panels on rooftops.",
+    "missing": [
+      "speed_run",
+      "combo_lock"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "contractor": {
+    "name": "\ud83d\udccb General Contractor",
+    "category": "trades",
+    "subcategory": "management",
+    "description": "Oversee entire construction projects from start to finish.",
+    "missing": [
+      "speed_run",
+      "sequence"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "doctor": {
+    "name": "\ud83d\udc68\u200d\u2695\ufe0f Doctor",
+    "category": "medical",
+    "subcategory": "clinical",
+    "description": "Save lives at the hospital.",
+    "missing": [
+      "match_pairs",
+      "categorize"
+    ],
+    "existing": [
+      "diagnosis"
+    ]
+  },
+  "nurse": {
+    "name": "\ud83d\udc89 Nurse",
+    "category": "medical",
+    "subcategory": "clinical",
+    "description": "Care for patients and assist doctors.",
+    "missing": [
+      "diagnosis",
+      "spot_error"
+    ],
+    "existing": [
+      "triage"
+    ]
+  },
+  "paramedic": {
+    "name": "\ud83d\ude91 Paramedic",
+    "category": "medical",
+    "subcategory": "clinical",
+    "description": "Respond to emergencies and save lives on the go.",
+    "missing": [
+      "sequence",
+      "spot_error"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "pharmacist": {
+    "name": "\ud83d\udc8a Pharmacist",
+    "category": "medical",
+    "subcategory": "care",
+    "description": "Dispense medication and advise patients.",
+    "missing": [
+      "triage",
+      "categorize"
+    ],
+    "existing": [
+      "match_pairs"
+    ]
+  },
+  "dentist": {
+    "name": "\ud83e\uddb7 Dentist",
+    "category": "medical",
+    "subcategory": "clinical",
+    "description": "Fix teeth and brighten smiles.",
+    "missing": [
+      "match_pairs",
+      "categorize"
+    ],
+    "existing": [
+      "spot_error"
+    ]
+  },
+  "surgeon": {
+    "name": "\ud83d\udd2c Surgeon",
+    "category": "medical",
+    "subcategory": "clinical",
+    "description": "Perform complex surgeries in the operating room.",
+    "missing": [
+      "spot_error",
+      "memory"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "vet": {
+    "name": "\ud83d\udc3e Veterinarian",
+    "category": "medical",
+    "subcategory": "care",
+    "description": "Treat sick and injured animals.",
+    "missing": [
+      "match_pairs",
+      "spot_error"
+    ],
+    "existing": [
+      "diagnosis"
+    ]
+  },
+  "therapist": {
+    "name": "\ud83d\udecb\ufe0f Therapist",
+    "category": "medical",
+    "subcategory": "care",
+    "description": "Help people through mental health challenges.",
+    "missing": [
+      "memory",
+      "match_pairs"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "radiologist": {
+    "name": "\ud83d\udcf7 Radiologist",
+    "category": "medical",
+    "subcategory": "care",
+    "description": "Read X-rays and MRI scans.",
+    "missing": [
+      "triage",
+      "diagnosis"
+    ],
+    "existing": [
+      "spot_error"
+    ]
+  },
+  "lab_tech": {
+    "name": "\ud83e\uddea Lab Technician",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Run tests on blood and tissue samples.",
+    "missing": [
+      "pattern",
+      "multi_stage"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "research_sci": {
+    "name": "\ud83d\udd2c Research Scientist",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Conduct experiments and publish findings.",
+    "missing": [
+      "match_pairs",
+      "triage"
+    ],
+    "existing": [
+      "multi_stage"
+    ]
+  },
+  "biologist": {
+    "name": "\ud83e\uddec Biologist",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Study living organisms and ecosystems.",
+    "missing": [
+      "pattern",
+      "spot_error"
+    ],
+    "existing": [
+      "categorize"
+    ]
+  },
+  "chemist": {
+    "name": "\u2697\ufe0f Chemist",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Develop new compounds and materials.",
+    "missing": [
+      "spot_error",
+      "match_pairs"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "physicist": {
+    "name": "\ud83d\udd2d Physicist",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Study the fundamental laws of the universe.",
+    "missing": [
+      "spot_error",
+      "pattern"
+    ],
+    "existing": [
+      "math"
+    ]
+  },
+  "astronomer": {
+    "name": "\ud83c\udf0c Astronomer",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Observe stars and map the cosmos.",
+    "missing": [
+      "sequence",
+      "memory"
+    ],
+    "existing": [
+      "pattern"
+    ]
+  },
+  "geneticist": {
+    "name": "\ud83e\uddec Geneticist",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Study DNA and genetic disorders.",
+    "missing": [
+      "spot_error",
+      "memory"
+    ],
+    "existing": [
+      "match_pairs"
+    ]
+  },
+  "neurosurgeon": {
+    "name": "\ud83e\udde0 Neurosurgeon",
+    "category": "medical",
+    "subcategory": "clinical",
+    "description": "Perform delicate brain surgeries.",
+    "missing": [
+      "match_pairs",
+      "memory"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "cardiologist": {
+    "name": "\u2764\ufe0f Cardiologist",
+    "category": "medical",
+    "subcategory": "clinical",
+    "description": "Specialize in heart health and surgery.",
+    "missing": [
+      "match_pairs",
+      "pattern"
+    ],
+    "existing": [
+      "diagnosis"
+    ]
+  },
+  "pediatrician": {
+    "name": "\ud83d\udc76 Pediatrician",
+    "category": "medical",
+    "subcategory": "clinical",
+    "description": "Care for children and infants.",
+    "missing": [
+      "spot_error",
+      "triage"
+    ],
+    "existing": [
+      "diagnosis"
+    ]
+  },
+  "optometrist": {
+    "name": "\ud83d\udc41\ufe0f Optometrist",
+    "category": "medical",
+    "subcategory": "care",
+    "description": "Test vision and prescribe glasses.",
+    "missing": [
+      "triage",
+      "memory"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "physical_ther": {
+    "name": "\ud83d\udcaa Physical Therapist",
+    "category": "medical",
+    "subcategory": "care",
+    "description": "Help patients recover mobility after injuries.",
+    "missing": [
+      "categorize",
+      "memory"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "med_researcher": {
+    "name": "\ud83e\uddeb Medical Researcher",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Develop new treatments and cures.",
+    "missing": [
+      "memory",
+      "triage"
+    ],
+    "existing": [
+      "multi_stage"
+    ]
+  },
+  "epidemiologist": {
+    "name": "\ud83d\ude37 Epidemiologist",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Track and prevent disease outbreaks.",
+    "missing": [
+      "memory",
+      "match_pairs"
+    ],
+    "existing": [
+      "pattern"
+    ]
+  },
+  "toxicologist": {
+    "name": "\u2620\ufe0f Toxicologist",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Study poisons and their effects on the body.",
+    "missing": [
+      "diagnosis",
+      "sequence"
+    ],
+    "existing": [
+      "match_pairs"
+    ]
+  },
+  "astronaut": {
+    "name": "\ud83d\ude80 Astronaut",
+    "category": "medical",
+    "subcategory": "research",
+    "description": "Explore space and conduct research in orbit.",
+    "missing": [
+      "sequence",
+      "match_pairs"
+    ],
+    "existing": [
+      "multi_stage"
+    ]
+  },
+  "programmer": {
+    "name": "\ud83d\udcbb Programmer",
+    "category": "tech",
+    "subcategory": "software",
+    "description": "Write code for tech companies.",
+    "missing": [
+      "precision",
+      "math"
+    ],
+    "existing": [
+      "spot_error"
+    ]
+  },
+  "it_support": {
+    "name": "\ud83c\udfa7 IT Support",
+    "category": "tech",
+    "subcategory": "infra",
+    "description": "Help people fix their computer problems.",
+    "missing": [
+      "pattern",
+      "spot_error"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "web_dev": {
+    "name": "\ud83c\udf10 Web Developer",
+    "category": "tech",
+    "subcategory": "software",
+    "description": "Build websites and web applications.",
+    "missing": [
+      "precision",
+      "shift_sim"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "data_analyst": {
+    "name": "\ud83d\udcca Data Analyst",
+    "category": "tech",
+    "subcategory": "data_ai",
+    "description": "Analyze data to find trends and insights.",
+    "missing": [
+      "math",
+      "sequence"
+    ],
+    "existing": [
+      "pattern"
+    ]
+  },
+  "sysadmin": {
+    "name": "\ud83d\udda5\ufe0f Sysadmin",
+    "category": "tech",
+    "subcategory": "infra",
+    "description": "Manage servers and keep systems running.",
+    "missing": [
+      "precision",
+      "shift_sim"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "ux_designer": {
+    "name": "\ud83c\udfa8 UX Designer",
+    "category": "tech",
+    "subcategory": "design_lead",
+    "description": "Design intuitive user interfaces.",
+    "missing": [
+      "combo_lock",
+      "fill_blank"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "game_dev": {
+    "name": "\ud83c\udfae Game Developer",
+    "category": "tech",
+    "subcategory": "software",
+    "description": "Create video games for millions of players.",
+    "missing": [
+      "precision",
+      "pattern"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "data_scientist": {
+    "name": "\ud83d\udcc8 Data Scientist",
+    "category": "tech",
+    "subcategory": "data_ai",
+    "description": "Build ML models and find patterns in big data.",
+    "missing": [
+      "fill_blank",
+      "precision"
+    ],
+    "existing": [
+      "math"
+    ]
+  },
+  "devops": {
+    "name": "\u2699\ufe0f DevOps Engineer",
+    "category": "tech",
+    "subcategory": "infra",
+    "description": "Automate deployments and manage infrastructure.",
+    "missing": [
+      "shift_sim",
+      "math"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "security_analyst": {
+    "name": "\ud83d\udd12 Security Analyst",
+    "category": "tech",
+    "subcategory": "security",
+    "description": "Protect systems from cyber threats.",
+    "missing": [
+      "precision",
+      "math"
+    ],
+    "existing": [
+      "spot_error"
+    ]
+  },
+  "mobile_dev": {
+    "name": "\ud83d\udcf1 Mobile Developer",
+    "category": "tech",
+    "subcategory": "software",
+    "description": "Build apps for iOS and Android.",
+    "missing": [
+      "combo_lock",
+      "pattern"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "ai_engineer": {
+    "name": "\ud83e\udd16 AI Engineer",
+    "category": "tech",
+    "subcategory": "data_ai",
+    "description": "Build neural networks and AI systems.",
+    "missing": [
+      "categorize",
+      "shift_sim"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "cloud_arch": {
+    "name": "\u2601\ufe0f Cloud Architect",
+    "category": "tech",
+    "subcategory": "infra",
+    "description": "Design cloud infrastructure at scale.",
+    "missing": [
+      "shift_sim",
+      "fill_blank"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "blockchain_dev": {
+    "name": "\u26d3\ufe0f Blockchain Dev",
+    "category": "tech",
+    "subcategory": "data_ai",
+    "description": "Build decentralized apps and smart contracts.",
+    "missing": [
+      "spot_error",
+      "precision"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "qa_tester": {
+    "name": "\ud83d\udc1b QA Tester",
+    "category": "tech",
+    "subcategory": "software",
+    "description": "Find bugs before users do.",
+    "missing": [
+      "pattern",
+      "combo_lock"
+    ],
+    "existing": [
+      "spot_error"
+    ]
+  },
+  "tech_writer": {
+    "name": "\ud83d\udcdd Tech Writer",
+    "category": "tech",
+    "subcategory": "software",
+    "description": "Write documentation and guides.",
+    "missing": [
+      "assembly",
+      "combo_lock"
+    ],
+    "existing": [
+      "fill_blank"
+    ]
+  },
+  "product_manager": {
+    "name": "\ud83d\udccb Product Manager",
+    "category": "tech",
+    "subcategory": "design_lead",
+    "description": "Lead product development from idea to launch.",
+    "missing": [
+      "fill_blank",
+      "assembly"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "db_admin": {
+    "name": "\ud83d\uddc4\ufe0f Database Admin",
+    "category": "tech",
+    "subcategory": "data_ai",
+    "description": "Manage databases and ensure data integrity.",
+    "missing": [
+      "combo_lock",
+      "shift_sim"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "network_eng": {
+    "name": "\ud83c\udf10 Network Engineer",
+    "category": "tech",
+    "subcategory": "infra",
+    "description": "Design and maintain computer networks.",
+    "missing": [
+      "spot_error",
+      "combo_lock"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "frontend_dev": {
+    "name": "\ud83d\udda5\ufe0f Frontend Developer",
+    "category": "tech",
+    "subcategory": "software",
+    "description": "Build beautiful user interfaces with JS.",
+    "missing": [
+      "fill_blank",
+      "precision"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "backend_dev": {
+    "name": "\u2699\ufe0f Backend Developer",
+    "category": "tech",
+    "subcategory": "software",
+    "description": "Build server-side logic and APIs.",
+    "missing": [
+      "spot_error",
+      "pattern"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "pentester": {
+    "name": "\ud83d\udd75\ufe0f Penetration Tester",
+    "category": "tech",
+    "subcategory": "security",
+    "description": "Hack systems legally to find vulnerabilities.",
+    "missing": [
+      "precision",
+      "spot_error"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "ml_engineer": {
+    "name": "\ud83e\udde0 ML Engineer",
+    "category": "tech",
+    "subcategory": "data_ai",
+    "description": "Deploy machine learning models to production.",
+    "missing": [
+      "math",
+      "precision"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "cto": {
+    "name": "\ud83d\udc54 CTO",
+    "category": "tech",
+    "subcategory": "design_lead",
+    "description": "Lead the entire tech strategy of a company.",
+    "missing": [
+      "assembly",
+      "pattern"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "hacker": {
+    "name": "\ud83d\udcbb Ethical Hacker",
+    "category": "tech",
+    "subcategory": "security",
+    "description": "Get paid to break into systems \u2014 legally.",
+    "missing": [
+      "spot_error",
+      "sequence"
+    ],
+    "existing": [
+      "combo_lock"
+    ]
+  },
+  "ceo": {
+    "name": "\ud83d\udc54 CEO",
+    "category": "business",
+    "subcategory": "executive",
+    "description": "Run a multi-million dollar company.",
+    "missing": [
+      "multi_stage",
+      "match_pairs"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "bank_teller": {
+    "name": "\ud83c\udfe6 Bank Teller",
+    "category": "business",
+    "subcategory": "finance",
+    "description": "Handle deposits and withdrawals at a bank.",
+    "missing": [
+      "budget",
+      "multi_stage"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "accountant": {
+    "name": "\ud83e\uddee Accountant",
+    "category": "business",
+    "subcategory": "finance",
+    "description": "Balance books and prepare taxes.",
+    "missing": [
+      "negotiation",
+      "match_pairs"
+    ],
+    "existing": [
+      "math"
+    ]
+  },
+  "sales_rep": {
+    "name": "\ud83e\udd1d Sales Rep",
+    "category": "business",
+    "subcategory": "management",
+    "description": "Sell products and earn commissions.",
+    "missing": [
+      "shift_sim",
+      "multi_stage"
+    ],
+    "existing": [
+      "negotiation"
+    ]
+  },
+  "real_estate": {
+    "name": "\ud83c\udfe0 Real Estate Agent",
+    "category": "business",
+    "subcategory": "services",
+    "description": "Buy and sell properties for clients.",
+    "missing": [
+      "match_pairs",
+      "budget"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "stockbroker": {
+    "name": "\ud83d\udcc8 Stockbroker",
+    "category": "business",
+    "subcategory": "finance",
+    "description": "Trade stocks on behalf of clients.",
+    "missing": [
+      "multi_stage",
+      "negotiation"
+    ],
+    "existing": [
+      "pattern"
+    ]
+  },
+  "financial_adv": {
+    "name": "\ud83d\udcb0 Financial Advisor",
+    "category": "business",
+    "subcategory": "finance",
+    "description": "Advise clients on investments and savings.",
+    "missing": [
+      "pattern",
+      "precision"
+    ],
+    "existing": [
+      "budget"
+    ]
+  },
+  "manager": {
+    "name": "\ud83d\udccb Manager",
+    "category": "business",
+    "subcategory": "management",
+    "description": "Manage a team and oversee operations.",
+    "missing": [
+      "math",
+      "quick_pick"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "hr_specialist": {
+    "name": "\ud83d\udc64 HR Specialist",
+    "category": "business",
+    "subcategory": "management",
+    "description": "Hire employees and handle workplace issues.",
+    "missing": [
+      "pattern",
+      "shift_sim"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "marketing": {
+    "name": "\ud83d\udce2 Marketing Specialist",
+    "category": "business",
+    "subcategory": "management",
+    "description": "Run ad campaigns and build brand awareness.",
+    "missing": [
+      "match_pairs",
+      "math"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "consultant": {
+    "name": "\ud83d\udcbc Consultant",
+    "category": "business",
+    "subcategory": "management",
+    "description": "Advise companies on strategy and growth.",
+    "missing": [
+      "negotiation",
+      "math"
+    ],
+    "existing": [
+      "multi_stage"
+    ]
+  },
+  "auditor": {
+    "name": "\ud83d\udd0d Auditor",
+    "category": "business",
+    "subcategory": "finance",
+    "description": "Inspect financial records for accuracy.",
+    "missing": [
+      "shift_sim",
+      "math"
+    ],
+    "existing": [
+      "spot_error"
+    ]
+  },
+  "loan_officer": {
+    "name": "\ud83d\udcb5 Loan Officer",
+    "category": "business",
+    "subcategory": "finance",
+    "description": "Approve or deny loan applications.",
+    "missing": [
+      "multi_stage",
+      "negotiation"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "insurance": {
+    "name": "\ud83d\udee1\ufe0f Insurance Agent",
+    "category": "business",
+    "subcategory": "services",
+    "description": "Sell insurance policies to clients.",
+    "missing": [
+      "budget",
+      "pattern"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "bookkeeper": {
+    "name": "\ud83d\udcd2 Bookkeeper",
+    "category": "business",
+    "subcategory": "finance",
+    "description": "Record daily financial transactions.",
+    "missing": [
+      "multi_stage",
+      "pattern"
+    ],
+    "existing": [
+      "math"
+    ]
+  },
+  "tax_prep": {
+    "name": "\ud83e\uddfe Tax Preparer",
+    "category": "business",
+    "subcategory": "finance",
+    "description": "Prepare tax returns for individuals and businesses.",
+    "missing": [
+      "negotiation",
+      "shift_sim"
+    ],
+    "existing": [
+      "math"
+    ]
+  },
+  "investment_bank": {
+    "name": "\ud83c\udfe6 Investment Banker",
+    "category": "business",
+    "subcategory": "investing",
+    "description": "Advise on mergers, acquisitions, and IPOs.",
+    "missing": [
+      "budget",
+      "quick_pick"
+    ],
+    "existing": [
+      "negotiation"
+    ]
+  },
+  "venture_cap": {
+    "name": "\ud83d\udcb8 Venture Capitalist",
+    "category": "business",
+    "subcategory": "investing",
+    "description": "Invest in promising startups.",
+    "missing": [
+      "match_pairs",
+      "math"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "hedge_fund": {
+    "name": "\ud83d\udcca Hedge Fund Manager",
+    "category": "business",
+    "subcategory": "investing",
+    "description": "Manage a hedge fund and maximize returns.",
+    "missing": [
+      "negotiation",
+      "quick_pick"
+    ],
+    "existing": [
+      "pattern"
+    ]
+  },
+  "entrepreneur": {
+    "name": "\ud83d\ude80 Entrepreneur",
+    "category": "business",
+    "subcategory": "executive",
+    "description": "Start your own business from scratch.",
+    "missing": [
+      "multi_stage",
+      "budget"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "cfo": {
+    "name": "\ud83d\udcb0 CFO",
+    "category": "business",
+    "subcategory": "executive",
+    "description": "Manage the finances of a major corporation.",
+    "missing": [
+      "quick_pick",
+      "match_pairs"
+    ],
+    "existing": [
+      "budget"
+    ]
+  },
+  "coo": {
+    "name": "\u2699\ufe0f COO",
+    "category": "business",
+    "subcategory": "executive",
+    "description": "Oversee daily operations of a company.",
+    "missing": [
+      "quick_pick",
+      "negotiation"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "trader": {
+    "name": "\ud83d\udcc9 Day Trader",
+    "category": "business",
+    "subcategory": "investing",
+    "description": "Trade stocks daily from your home office.",
+    "missing": [
+      "multi_stage",
+      "negotiation"
+    ],
+    "existing": [
+      "pattern"
+    ]
+  },
+  "negotiator": {
+    "name": "\ud83e\udd1d Negotiator",
+    "category": "business",
+    "subcategory": "services",
+    "description": "Negotiate deals and contracts for corporations.",
+    "missing": [
+      "match_pairs",
+      "budget"
+    ],
+    "existing": [
+      "negotiation"
+    ]
+  },
+  "magnate": {
+    "name": "\ud83d\udc51 Business Magnate",
+    "category": "business",
+    "subcategory": "executive",
+    "description": "Own a vast business empire across multiple industries.",
+    "missing": [
+      "match_pairs",
+      "math"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "artist": {
+    "name": "\ud83c\udfa8 Artist",
+    "category": "creative",
+    "subcategory": "visual",
+    "description": "Paint and sell original artwork.",
+    "missing": [
+      "sort",
+      "typing_race"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "musician": {
+    "name": "\ud83c\udfb5 Musician",
+    "category": "creative",
+    "subcategory": "performing",
+    "description": "Perform music at venues and events.",
+    "missing": [
+      "memory",
+      "sort"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "writer": {
+    "name": "\u270d\ufe0f Writer",
+    "category": "creative",
+    "subcategory": "writing",
+    "description": "Write novels, articles, and stories.",
+    "missing": [
+      "match_pairs",
+      "precision"
+    ],
+    "existing": [
+      "fill_blank"
+    ]
+  },
+  "photographer": {
+    "name": "\ud83d\udcf7 Photographer",
+    "category": "creative",
+    "subcategory": "visual",
+    "description": "Take photos for clients and events.",
+    "missing": [
+      "sequence",
+      "memory"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "graphic_design": {
+    "name": "\ud83d\udd8c\ufe0f Graphic Designer",
+    "category": "creative",
+    "subcategory": "visual",
+    "description": "Design logos, posters, and brand materials.",
+    "missing": [
+      "memory",
+      "sequence"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "actor": {
+    "name": "\ud83c\udfad Actor",
+    "category": "creative",
+    "subcategory": "performing",
+    "description": "Perform in plays, films, and TV shows.",
+    "missing": [
+      "match_pairs",
+      "sequence"
+    ],
+    "existing": [
+      "memory"
+    ]
+  },
+  "filmmaker": {
+    "name": "\ud83c\udfac Filmmaker",
+    "category": "creative",
+    "subcategory": "media_film",
+    "description": "Direct and produce films.",
+    "missing": [
+      "fill_blank",
+      "quick_pick"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "animator": {
+    "name": "\ud83c\udf9e\ufe0f Animator",
+    "category": "creative",
+    "subcategory": "media_film",
+    "description": "Create animations for film and games.",
+    "missing": [
+      "match_pairs",
+      "quick_pick"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "fashion_design": {
+    "name": "\ud83d\udc57 Fashion Designer",
+    "category": "creative",
+    "subcategory": "design",
+    "description": "Design clothing and accessories.",
+    "missing": [
+      "fill_blank",
+      "match_pairs"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "interior_design": {
+    "name": "\ud83d\udecb\ufe0f Interior Designer",
+    "category": "creative",
+    "subcategory": "design",
+    "description": "Design beautiful indoor spaces.",
+    "missing": [
+      "timing",
+      "fill_blank"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "architect": {
+    "name": "\ud83c\udfdb\ufe0f Architect",
+    "category": "creative",
+    "subcategory": "design",
+    "description": "Design buildings and structures.",
+    "missing": [
+      "fill_blank",
+      "sequence"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "sculptor": {
+    "name": "\ud83d\uddff Sculptor",
+    "category": "creative",
+    "subcategory": "visual",
+    "description": "Create sculptures from stone, metal, and clay.",
+    "missing": [
+      "typing_race",
+      "match_pairs"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "tattoo_artist": {
+    "name": "\ud83d\udd8b\ufe0f Tattoo Artist",
+    "category": "creative",
+    "subcategory": "design",
+    "description": "Ink permanent art on people's skin.",
+    "missing": [
+      "match_pairs",
+      "sequence"
+    ],
+    "existing": [
+      "precision"
+    ]
+  },
+  "makeup_artist": {
+    "name": "\ud83d\udc84 Makeup Artist",
+    "category": "creative",
+    "subcategory": "design",
+    "description": "Do makeup for film, TV, and events.",
+    "missing": [
+      "typing_race",
+      "timing"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "dancer": {
+    "name": "\ud83d\udc83 Dancer",
+    "category": "creative",
+    "subcategory": "performing",
+    "description": "Perform dance routines on stage.",
+    "missing": [
+      "match_pairs",
+      "quick_pick"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "comedian": {
+    "name": "\ud83c\udfa4 Comedian",
+    "category": "creative",
+    "subcategory": "performing",
+    "description": "Tell jokes and perform stand-up comedy.",
+    "missing": [
+      "typing_race",
+      "timing"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "dj": {
+    "name": "\ud83c\udfa7 DJ",
+    "category": "creative",
+    "subcategory": "performing",
+    "description": "Mix tracks at clubs and festivals.",
+    "missing": [
+      "fill_blank",
+      "precision"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "producer": {
+    "name": "\ud83c\udfb9 Music Producer",
+    "category": "creative",
+    "subcategory": "media_film",
+    "description": "Produce tracks for recording artists.",
+    "missing": [
+      "sort",
+      "memory"
+    ],
+    "existing": [
+      "assembly"
+    ]
+  },
+  "director": {
+    "name": "\ud83c\udfac Film Director",
+    "category": "creative",
+    "subcategory": "media_film",
+    "description": "Direct major motion pictures.",
+    "missing": [
+      "fill_blank",
+      "sort"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "novelist": {
+    "name": "\ud83d\udcda Novelist",
+    "category": "creative",
+    "subcategory": "writing",
+    "description": "Write bestselling novels.",
+    "missing": [
+      "typing_race",
+      "pattern"
+    ],
+    "existing": [
+      "fill_blank"
+    ]
+  },
+  "jeweler": {
+    "name": "\ud83d\udc8e Jeweler",
+    "category": "creative",
+    "subcategory": "visual",
+    "description": "Craft fine jewelry from gold and gems.",
+    "missing": [
+      "timing",
+      "fill_blank"
+    ],
+    "existing": [
+      "precision"
+    ]
+  },
+  "potter": {
+    "name": "\ud83c\udffa Potter",
+    "category": "creative",
+    "subcategory": "visual",
+    "description": "Throw clay and create ceramics.",
+    "missing": [
+      "precision",
+      "memory"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "stunt_double": {
+    "name": "\ud83e\udd38 Stunt Double",
+    "category": "creative",
+    "subcategory": "performing",
+    "description": "Perform dangerous stunts on film sets.",
+    "missing": [
+      "sequence",
+      "typing_race"
+    ],
+    "existing": [
+      "timing"
+    ]
+  },
+  "voice_actor": {
+    "name": "\ud83c\udf99\ufe0f Voice Actor",
+    "category": "creative",
+    "subcategory": "performing",
+    "description": "Voice characters for animation and games.",
+    "missing": [
+      "sequence",
+      "quick_pick"
+    ],
+    "existing": [
+      "typing_race"
+    ]
+  },
+  "maestro": {
+    "name": "\ud83c\udfbc Maestro",
+    "category": "creative",
+    "subcategory": "performing",
+    "description": "Conduct world-class symphony orchestras.",
+    "missing": [
+      "typing_race",
+      "precision"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "delivery": {
+    "name": "\ud83d\udce6 Delivery Driver",
+    "category": "transport",
+    "subcategory": "driving",
+    "description": "Deliver packages around the city.",
+    "missing": [
+      "quick_pick",
+      "sort"
+    ],
+    "existing": [
+      "route_plan"
+    ]
+  },
+  "pilot": {
+    "name": "\u2708\ufe0f Pilot",
+    "category": "transport",
+    "subcategory": "aviation",
+    "description": "Fly planes across the world.",
+    "missing": [
+      "timing",
+      "multi_stage"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "truck_driver": {
+    "name": "\ud83d\ude9b Truck Driver",
+    "category": "transport",
+    "subcategory": "driving",
+    "description": "Haul cargo across long distances.",
+    "missing": [
+      "sequence",
+      "multi_stage"
+    ],
+    "existing": [
+      "route_plan"
+    ]
+  },
+  "taxi_driver": {
+    "name": "\ud83d\ude95 Taxi Driver",
+    "category": "transport",
+    "subcategory": "driving",
+    "description": "Drive passengers around the city.",
+    "missing": [
+      "speed_run",
+      "timing"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "bus_driver": {
+    "name": "\ud83d\ude8c Bus Driver",
+    "category": "transport",
+    "subcategory": "driving",
+    "description": "Drive a city bus on a fixed route.",
+    "missing": [
+      "sequence",
+      "timing"
+    ],
+    "existing": [
+      "route_plan"
+    ]
+  },
+  "train_driver": {
+    "name": "\ud83d\ude86 Train Driver",
+    "category": "transport",
+    "subcategory": "driving",
+    "description": "Operate trains on regional routes.",
+    "missing": [
+      "route_plan",
+      "multi_stage"
+    ],
+    "existing": [
+      "timing"
+    ]
+  },
+  "ship_captain": {
+    "name": "\ud83d\udea2 Ship Captain",
+    "category": "transport",
+    "subcategory": "maritime",
+    "description": "Command cargo ships across oceans.",
+    "missing": [
+      "timing",
+      "sort"
+    ],
+    "existing": [
+      "multi_stage"
+    ]
+  },
+  "forklift": {
+    "name": "\ud83c\udfd7\ufe0f Forklift Operator",
+    "category": "transport",
+    "subcategory": "warehouse",
+    "description": "Move pallets in a warehouse.",
+    "missing": [
+      "multi_stage",
+      "quick_pick"
+    ],
+    "existing": [
+      "precision"
+    ]
+  },
+  "warehouse": {
+    "name": "\ud83d\udce6 Warehouse Worker",
+    "category": "transport",
+    "subcategory": "warehouse",
+    "description": "Pack, sort, and organize inventory.",
+    "missing": [
+      "speed_run",
+      "timing"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "courier": {
+    "name": "\ud83d\udef5 Courier",
+    "category": "transport",
+    "subcategory": "courier",
+    "description": "Deliver urgent documents on a scooter.",
+    "missing": [
+      "sequence",
+      "speed_run"
+    ],
+    "existing": [
+      "route_plan"
+    ]
+  },
+  "ambulance_drv": {
+    "name": "\ud83d\ude91 Ambulance Driver",
+    "category": "transport",
+    "subcategory": "emergency",
+    "description": "Drive ambulances to emergencies.",
+    "missing": [
+      "sort",
+      "sequence"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "fire_truck_drv": {
+    "name": "\ud83d\ude92 Fire Truck Driver",
+    "category": "transport",
+    "subcategory": "emergency",
+    "description": "Drive fire trucks to emergency scenes.",
+    "missing": [
+      "timing",
+      "sort"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "subway_op": {
+    "name": "\ud83d\ude87 Subway Operator",
+    "category": "transport",
+    "subcategory": "driving",
+    "description": "Drive underground subway trains.",
+    "missing": [
+      "precision",
+      "route_plan"
+    ],
+    "existing": [
+      "timing"
+    ]
+  },
+  "tram_driver": {
+    "name": "\ud83d\ude8a Tram Driver",
+    "category": "transport",
+    "subcategory": "driving",
+    "description": "Drive street trams through the city.",
+    "missing": [
+      "speed_run",
+      "sort"
+    ],
+    "existing": [
+      "timing"
+    ]
+  },
+  "logistics_mgr": {
+    "name": "\ud83d\udccb Logistics Manager",
+    "category": "transport",
+    "subcategory": "management",
+    "description": "Coordinate supply chains and shipments.",
+    "missing": [
+      "timing",
+      "sequence"
+    ],
+    "existing": [
+      "shift_sim"
+    ]
+  },
+  "air_traffic": {
+    "name": "\ud83d\udce1 Air Traffic Controller",
+    "category": "transport",
+    "subcategory": "aviation",
+    "description": "Guide planes safely through the skies.",
+    "missing": [
+      "precision",
+      "route_plan"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "harbor_master": {
+    "name": "\u2693 Harbor Master",
+    "category": "transport",
+    "subcategory": "maritime",
+    "description": "Manage ship traffic at a busy port.",
+    "missing": [
+      "speed_run",
+      "multi_stage"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "cargo_pilot": {
+    "name": "\u2708\ufe0f Cargo Pilot",
+    "category": "transport",
+    "subcategory": "aviation",
+    "description": "Fly cargo planes on overnight routes.",
+    "missing": [
+      "multi_stage",
+      "route_plan"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "helicopter_pilot": {
+    "name": "\ud83d\ude81 Helicopter Pilot",
+    "category": "transport",
+    "subcategory": "aviation",
+    "description": "Fly helicopters for tours, rescue, and transport.",
+    "missing": [
+      "precision",
+      "route_plan"
+    ],
+    "existing": [
+      "sequence"
+    ]
+  },
+  "dispatch": {
+    "name": "\ud83d\udcfb Dispatcher",
+    "category": "transport",
+    "subcategory": "warehouse",
+    "description": "Coordinate drivers and routes from a control center.",
+    "missing": [
+      "quick_pick",
+      "precision"
+    ],
+    "existing": [
+      "sort"
+    ]
+  },
+  "bike_courier": {
+    "name": "\ud83d\udeb4 Bike Courier",
+    "category": "transport",
+    "subcategory": "courier",
+    "description": "Deliver packages by bicycle in the city.",
+    "missing": [
+      "speed_run",
+      "precision"
+    ],
+    "existing": [
+      "route_plan"
+    ]
+  },
+  "chauffeur": {
+    "name": "\ud83e\udd35 Chauffeur",
+    "category": "transport",
+    "subcategory": "driving",
+    "description": "Drive VIPs in luxury vehicles.",
+    "missing": [
+      "multi_stage",
+      "timing"
+    ],
+    "existing": [
+      "quick_pick"
+    ]
+  },
+  "tow_truck": {
+    "name": "\ud83d\ude9b Tow Truck Driver",
+    "category": "transport",
+    "subcategory": "courier",
+    "description": "Tow broken-down vehicles to the shop.",
+    "missing": [
+      "multi_stage",
+      "quick_pick"
+    ],
+    "existing": [
+      "route_plan"
+    ]
+  },
+  "supply_chain": {
+    "name": "\ud83d\udd17 Supply Chain Analyst",
+    "category": "transport",
+    "subcategory": "management",
+    "description": "Optimize global supply chain operations.",
+    "missing": [
+      "route_plan",
+      "sort"
+    ],
+    "existing": [
+      "budget"
+    ]
+  },
+  "test_pilot": {
+    "name": "\u2708\ufe0f Test Pilot",
+    "category": "transport",
+    "subcategory": "aviation",
+    "description": "Test experimental aircraft at supersonic speeds.",
+    "missing": [
+      "speed_run",
+      "precision"
+    ],
+    "existing": [
+      "multi_stage"
+    ]
+  }
+}
