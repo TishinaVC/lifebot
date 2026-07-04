@@ -227,7 +227,7 @@ class SequenceView(discord.ui.View):
     def _make_callback(self, item: str, btn: discord.ui.Button):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -276,7 +276,7 @@ class SortView(discord.ui.View):
     def _make_callback(self, item: str, idx: int):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             select = self.children[idx]
             self.user_answers[item] = select.values[0]
@@ -315,7 +315,7 @@ class QuickPickView(discord.ui.View):
     def _make_callback(self, option: str):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -370,7 +370,7 @@ class MemoryView(discord.ui.View):
     def _make_callback(self, item: str):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -433,7 +433,7 @@ class TimingView(discord.ui.View):
 
     async def _on_click(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
             return
         if self.result is not None:
             return
@@ -505,7 +505,7 @@ class MatchPairsView(discord.ui.View):
     def _make_callback(self, left: str):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -549,7 +549,7 @@ class SpotErrorView(discord.ui.View):
     def _make_callback(self, idx: int):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -590,7 +590,7 @@ class PatternView(discord.ui.View):
 
         async def on_submit(modal_interaction: discord.Interaction):
             if modal_interaction.user.id != self.user_id:
-                await modal_interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await modal_interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             elapsed = time.time() - self.start_time
             user_answer = text_input.value.strip().lower()
@@ -635,7 +635,7 @@ class PrecisionView(discord.ui.View):
 
     async def _on_click(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
             return
         if self.result is not None:
             return
@@ -679,7 +679,7 @@ class ComboLockView(discord.ui.View):
 
     async def _on_submit(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
             return
         if self.result is not None:
             return
@@ -729,7 +729,7 @@ class SpeedRunView(discord.ui.View):
 
     async def _on_click(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
             return
         if self.result is not None:
             return
@@ -785,7 +785,7 @@ class AssemblyView(discord.ui.View):
 
     async def _on_select(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
             return
         if self.result is not None:
             return
@@ -837,7 +837,7 @@ class TypingRaceView(discord.ui.View):
 
     async def _on_click(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
             return
         if self.result is not None:
             return
@@ -853,7 +853,7 @@ class TypingRaceView(discord.ui.View):
 
         async def on_submit(modal_interaction: discord.Interaction):
             if modal_interaction.user.id != self.user_id:
-                await modal_interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await modal_interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             elapsed = time.time() - self.start_time
             typed = text_input.value.strip()
@@ -893,7 +893,7 @@ class MathView(discord.ui.View):
 
     async def _on_click(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
             return
         if self.result is not None:
             return
@@ -903,7 +903,7 @@ class MathView(discord.ui.View):
 
         async def on_submit(modal_interaction: discord.Interaction):
             if modal_interaction.user.id != self.user_id:
-                await modal_interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await modal_interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             elapsed = time.time() - self.start_time
             try:
@@ -947,7 +947,7 @@ class FillBlankView(discord.ui.View):
 
     async def _on_click(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
             return
         if self.result is not None:
             return
@@ -957,7 +957,7 @@ class FillBlankView(discord.ui.View):
 
         async def on_submit(modal_interaction: discord.Interaction):
             if modal_interaction.user.id != self.user_id:
-                await modal_interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await modal_interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             elapsed = time.time() - self.start_time
             user_ans = text_input.value.strip().lower()
@@ -1012,7 +1012,7 @@ class BudgetView(discord.ui.View):
     def _make_callback(self, cat: str):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -1064,7 +1064,7 @@ class RoutePlanView(discord.ui.View):
     def _make_callback(self, stop: str, btn: discord.ui.Button):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -1108,7 +1108,7 @@ class RecipeBuildView(discord.ui.View):
     def _make_callback(self, ing: str, btn: discord.ui.Button):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -1152,7 +1152,7 @@ class ShiftSimView(discord.ui.View):
     def _make_callback(self, sit: str, btn: discord.ui.Button):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -1196,7 +1196,7 @@ class TriageView(discord.ui.View):
     def _make_callback(self, patient: str, btn: discord.ui.Button):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -1239,7 +1239,7 @@ class DiagnosisView(discord.ui.View):
     def _make_callback(self, option: str):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -1285,7 +1285,7 @@ class NegotiationView(discord.ui.View):
     def _make_callback(self, option: str):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -1336,7 +1336,7 @@ class CategorizeView(discord.ui.View):
     def _make_callback(self, item: str):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id != self.user_id:
-                await interaction.response.send_message("This isn't your minigame!", ephemeral=True)
+                await interaction.response.send_message(f"You clicked on {self.display_name}'s minigame!", ephemeral=True)
                 return
             if self.result is not None:
                 return
@@ -1423,6 +1423,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         order = content.get("order", items)
         view = SequenceView(items, order)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}📋 **{content.get('prompt', 'Arrange in the correct order:')}**\nClick items in the correct sequence:", view=view)
         await view.wait()
@@ -1437,6 +1438,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         else:
             view = SortView(items, categories)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}📂 **{content.get('prompt', 'Sort the items:')}**", view=view)
         await view.wait()
@@ -1447,6 +1449,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         correct = content.get("correct", options[0] if options else "")
         view = QuickPickView(content.get("prompt", "Pick the correct answer:"), options, correct)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}❓ **{content.get('prompt', 'Pick the correct answer:')}**", view=view)
         await view.wait()
@@ -1456,6 +1459,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         sequence = content.get("sequence", GENERIC["memory"])
         view = MemoryView(sequence)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await view.start(interaction, f"{header}🧠 **{content.get('prompt', 'Memorize this sequence:')}**\n\n" + " → ".join(sequence))
         await view.wait()
@@ -1465,6 +1469,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         beats = content.get("beats", 4)
         view = TimingView(beats)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         bar = view._render_bar()
         await interaction.followup.send(content=f"{header}⏱️ **{content.get('prompt', 'Click when the █ hits the ▓ target zone!')}**\n{bar}", view=view)
@@ -1476,6 +1481,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         pairs = content.get("pairs", GENERIC["match_pairs"])
         view = MatchPairsView(pairs)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🔗 **{content.get('prompt', 'Match each pair:')}**", view=view)
         await view.wait()
@@ -1486,6 +1492,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         presented_seq = content.get("presented_sequence", content.get("buggy_code", content.get("actual", "").split("\n")))
         view = SpotErrorView(correct_seq, presented_seq)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(
             content=f"{header}🔍 **{content.get('prompt', 'Find the error!')}**\nClick the item that's wrong:",
@@ -1499,6 +1506,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         answer = content.get("answer", "")
         view = PatternView(seq, str(answer))
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🔢 **{content.get('prompt', 'Complete the pattern:')}**\n" + " → ".join(str(s) for s in seq))
         await view.run(interaction, content.get("prompt", "Complete the pattern:"))
@@ -1510,6 +1518,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         tolerance = content.get("tolerance", 2)
         view = PrecisionView(target, tolerance)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🎯 **{content.get('prompt', 'Stop at the target!')}**\nTarget: {target} (±{tolerance})")
         asyncio.create_task(view._counter_loop())
@@ -1521,6 +1530,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         max_val = content.get("max_val", 9)
         view = ComboLockView(pins, max_val)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(
             content=f"{header}🔓 **{content.get('prompt', 'Crack the combination lock!')}**\nUse the buttons to set each pin, then click Unlock.\nPins: {len(pins)} | Range: 0-{max_val}",
@@ -1533,6 +1543,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         tasks = content.get("tasks", GENERIC["speed_run"])
         view = SpeedRunView(tasks)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}⚡ **{content.get('prompt', 'Complete all tasks fast!')}**\nClick each task button as it appears!", view=view)
         await view.wait()
@@ -1542,6 +1553,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         parts = content.get("parts", GENERIC["assembly"])
         view = AssemblyView(parts)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🔧 **{content.get('prompt', 'Assemble in the correct order!')}**\nSelect parts in dependency order:", view=view)
         await view.wait()
@@ -1551,6 +1563,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         phrase = content.get("phrase", GENERIC["typing_race"][0])
         view = TypingRaceView(phrase)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(
             content=f"{header}⌨️ **{content.get('prompt', 'Type the phrase fast and accurately!')}**\n```\n{phrase}\n```",
@@ -1564,6 +1577,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         formula = content.get("formula", "")
         view = MathView(answer, formula)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🧮 **{content.get('prompt', 'Solve the math problem:')}**")
         await view.wait()
@@ -1574,6 +1588,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         context = content.get("context", "")
         view = FillBlankView(answer, context)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}✍️ **{content.get('prompt', 'Fill in the blank:')}**")
         await view.wait()
@@ -1585,6 +1600,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         optimal = content.get("optimal", {})
         view = BudgetView(categories, budget, optimal)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}💰 **{content.get('prompt', 'Allocate the budget:')}**\nTotal budget: ${budget:,}")
         await view.wait()
@@ -1595,6 +1611,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         optimal = content.get("optimal", stops)
         view = RoutePlanView(stops, optimal)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🗺️ **{content.get('prompt', 'Plan the best route!')}**\nClick stops in the most efficient order:", view=view)
         await view.wait()
@@ -1605,6 +1622,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         order = content.get("order", ingredients)
         view = RecipeBuildView(ingredients, order)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}👨‍🍳 **{content.get('prompt', 'Build the recipe in order!')}**\nClick ingredients in the correct sequence:", view=view)
         await view.wait()
@@ -1615,6 +1633,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         optimal = content.get("optimal", situations)
         view = ShiftSimView(situations, optimal)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}📋 **{content.get('prompt', 'Handle situations in priority order!')}**\nClick by priority:", view=view)
         await view.wait()
@@ -1625,6 +1644,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         optimal = content.get("optimal", patients)
         view = TriageView(patients, optimal)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🏥 **{content.get('prompt', 'Triage patients by priority!')}**\nClick patients in treatment order:", view=view)
         await view.wait()
@@ -1635,6 +1655,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         correct = content.get("correct", options[0] if options else "")
         view = DiagnosisView(content.get("prompt", "Diagnose the patient:"), options, correct, content.get("reasoning", ""))
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🩺 **{content.get('prompt', 'Diagnose the patient:')}**")
         await view.wait()
@@ -1645,6 +1666,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         correct = content.get("correct", options[0] if options else "")
         view = NegotiationView(content.get("prompt", "Negotiate:"), options, correct, content.get("explanation", ""))
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🤝 **{content.get('prompt', 'Negotiate the best outcome:')}**")
         await view.wait()
@@ -1655,6 +1677,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         categories = content.get("categories", [])
         view = CategorizeView(items, categories)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🏷️ **{content.get('prompt', 'Classify each item:')}**", view=view)
         await view.wait()
@@ -1664,6 +1687,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         stages = content.get("stages", [])
         view = MultiStageView(stages)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}🎭 **{content.get('prompt', 'Multi-stage challenge!')}**\nComplete each stage in sequence...")
         await view.run_stage(interaction)
@@ -1676,6 +1700,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         correct = content.get("correct", options[0] if options else "")
         view = QuickPickView(content.get("prompt", "Pick the correct answer:"), options, correct)
         view.user_id = user_id
+        view.display_name = display_name
         view.start_time = start_time
         await interaction.followup.send(content=f"{header}❓ **{content.get('prompt', 'Pick the correct answer:')}**", view=view)
         await view.wait()

@@ -51,12 +51,13 @@ class JobNavView(discord.ui.View):
           In 'set' mode: → job select → slot buttons → _do_set_job
     """
 
-    def __init__(self, cog, user_id: int, guild_id: int, mode: str = "browse"):
+    def __init__(self, cog, user_id: int, guild_id: int, mode: str = "browse", display_name: str = "Player"):
         super().__init__(timeout=180)
         self.cog = cog
         self.user_id = user_id
         self.guild_id = guild_id
         self.mode = mode
+        self.display_name = display_name
         self.category = None
         self.subcategory = None
         self._add_category_select()
@@ -99,7 +100,7 @@ class JobNavView(discord.ui.View):
 
     async def _on_category(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s menu!", ephemeral=True)
             return
         self.category = interaction.data["values"][0]
         self._add_subcategory_select()
@@ -110,7 +111,7 @@ class JobNavView(discord.ui.View):
 
     async def _on_subcategory(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s menu!", ephemeral=True)
             return
         self.subcategory = interaction.data["values"][0]
         await self._show_jobs(interaction)
@@ -175,7 +176,7 @@ class JobNavView(discord.ui.View):
 
     async def _on_job_select(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s menu!", ephemeral=True)
             return
         job_id = interaction.data["values"][0]
         job = JOBS.get(job_id, {})
@@ -204,7 +205,7 @@ class JobNavView(discord.ui.View):
 
     async def _on_slot(self, interaction: discord.Interaction, job_id: str, slot: int):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s menu!", ephemeral=True)
             return
         await interaction.response.defer(ephemeral=True)
         try:
@@ -221,7 +222,7 @@ class JobNavView(discord.ui.View):
 
     async def _back_to_categories(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s menu!", ephemeral=True)
             return
         self.category = None
         self.subcategory = None
@@ -233,7 +234,7 @@ class JobNavView(discord.ui.View):
 
     async def _back_to_subcategories(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s menu!", ephemeral=True)
             return
         self.subcategory = None
         self._add_subcategory_select()
@@ -244,7 +245,7 @@ class JobNavView(discord.ui.View):
 
     async def _cancel(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your menu!", ephemeral=True)
+            await interaction.response.send_message(f"You clicked on {self.display_name}'s menu!", ephemeral=True)
             return
         self.stop()
         await interaction.response.edit_message(content="Cancelled.", embed=None, view=None)
@@ -263,7 +264,7 @@ class Jobs(commands.Cog):
     @app_commands.command(name="jobs", description="Browse all available jobs — interactive category navigation")
     async def jobs_list(self, interaction: discord.Interaction):
         guild_id = interaction.guild.id if interaction.guild else 0
-        view = JobNavView(self, interaction.user.id, guild_id, mode="browse")
+        view = JobNavView(self, interaction.user.id, guild_id, mode="browse", display_name=interaction.user.display_name)
         await interaction.response.send_message(
             content="**Browse Jobs** — Choose a category to explore:",
             view=view,
@@ -295,7 +296,7 @@ class Jobs(commands.Cog):
     @job_group.command(name="set", description="Set a job — interactive category → subcategory → job selection")
     async def job_set(self, interaction: discord.Interaction):
         guild_id = interaction.guild.id if interaction.guild else 0
-        view = JobNavView(self, interaction.user.id, guild_id, mode="set")
+        view = JobNavView(self, interaction.user.id, guild_id, mode="set", display_name=interaction.user.display_name)
         await interaction.response.send_message(
             content="**Set a Job** — Choose a category to find a job:",
             view=view,
