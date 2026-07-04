@@ -575,7 +575,12 @@ class Jobs(commands.Cog):
             embed.add_field(name="Shift Event", value=event_text, inline=False)
 
         embed.add_field(name="Slot", value=f"Slot {slot_num}", inline=True)
-        cond_text = "Great condition!" if mods["combined"] >= 0.9 else ("Good condition" if mods["combined"] >= 0.75 else "Poor condition — low stats hurt performance")
+        if performance >= 0.7:
+            cond_text = "Great condition!" if mods["combined"] >= 0.9 else ("Good condition" if mods["combined"] >= 0.75 else "Poor condition — low stats hurt performance")
+        elif performance >= 0.35:
+            cond_text = "Decent condition, but sloppy work." if mods["combined"] >= 0.75 else "Poor condition and it showed."
+        else:
+            cond_text = "Rough shift — poor performance regardless of condition." if mods["combined"] >= 0.75 else "Poor condition and poor performance."
         embed.add_field(name="Condition", value=cond_text, inline=True)
 
         if leveled_up:

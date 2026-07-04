@@ -1400,16 +1400,23 @@ async def run_minigame(interaction: discord.Interaction, job_id: str, user_id: i
     if content is None:
         content = get_minigame_content(job_id, mg_type)
 
-    return await _dispatch_minigame(interaction, mg_type, content, user_id, start_time)
+    display_name = interaction.user.display_name
+    return await _dispatch_minigame(interaction, mg_type, content, user_id, start_time, display_name)
 
 
-async def run_minigame_sub(interaction: discord.Interaction, mg_type: str, content: dict, user_id: int, start_time: float) -> float:
+async def run_minigame_sub(interaction: discord.Interaction, mg_type: str, content: dict, user_id: int, start_time: float, display_name: str = "Player") -> float:
     """Run a sub-minigame (used by MultiStageView)."""
-    return await _dispatch_minigame(interaction, mg_type, content, user_id, start_time)
+    return await _dispatch_minigame(interaction, mg_type, content, user_id, start_time, display_name)
 
 
-async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, content: dict, user_id: int, start_time: float) -> float:
+def _mg_header(display_name: str) -> str:
+    """Visual header showing whose minigame this is — makes it clear to other users."""
+    return f"🎮 **{display_name}'s Minigame** — Only they can interact!\n"
+
+
+async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, content: dict, user_id: int, start_time: float, display_name: str = "Player") -> float:
     """Dispatch to the correct minigame view based on type."""
+    header = _mg_header(display_name)
 
     if mg_type == "sequence":
         items = content.get("items", content.get("sequence", GENERIC["sequence"]))
@@ -1417,7 +1424,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = SequenceView(items, order)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"📋 **{content.get('prompt', 'Arrange in the correct order:')}**\nClick items in the correct sequence:", view=view)
+        await interaction.followup.send(content=f"{header}📋 **{content.get('prompt', 'Arrange in the correct order:')}**\nClick items in the correct sequence:", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1431,7 +1438,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
             view = SortView(items, categories)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"📂 **{content.get('prompt', 'Sort the items:')}**", view=view)
+        await interaction.followup.send(content=f"{header}📂 **{content.get('prompt', 'Sort the items:')}**", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1441,7 +1448,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = QuickPickView(content.get("prompt", "Pick the correct answer:"), options, correct)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"❓ **{content.get('prompt', 'Pick the correct answer:')}**", view=view)
+        await interaction.followup.send(content=f"{header}❓ **{content.get('prompt', 'Pick the correct answer:')}**", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1450,7 +1457,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = MemoryView(sequence)
         view.user_id = user_id
         view.start_time = start_time
-        await view.start(interaction, f"🧠 **{content.get('prompt', 'Memorize this sequence:')}**\n\n" + " → ".join(sequence))
+        await view.start(interaction, f"{header}🧠 **{content.get('prompt', 'Memorize this sequence:')}**\n\n" + " → ".join(sequence))
         await view.wait()
         return view.result or 0.0
 
@@ -1460,7 +1467,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view.user_id = user_id
         view.start_time = start_time
         bar = view._render_bar()
-        await interaction.followup.send(content=f"⏱️ **{content.get('prompt', 'Click when the █ hits the ▓ target zone!')}**\n{bar}", view=view)
+        await interaction.followup.send(content=f"{header}⏱️ **{content.get('prompt', 'Click when the █ hits the ▓ target zone!')}**\n{bar}", view=view)
         asyncio.create_task(view._bar_loop())
         await view.wait()
         return view.result or 0.0
@@ -1470,7 +1477,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = MatchPairsView(pairs)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🔗 **{content.get('prompt', 'Match each pair:')}**", view=view)
+        await interaction.followup.send(content=f"{header}🔗 **{content.get('prompt', 'Match each pair:')}**", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1481,7 +1488,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view.user_id = user_id
         view.start_time = start_time
         await interaction.followup.send(
-            content=f"🔍 **{content.get('prompt', 'Find the error!')}**\nClick the item that's wrong:",
+            content=f"{header}🔍 **{content.get('prompt', 'Find the error!')}**\nClick the item that's wrong:",
             view=view,
         )
         await view.wait()
@@ -1493,7 +1500,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = PatternView(seq, str(answer))
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🔢 **{content.get('prompt', 'Complete the pattern:')}**\n" + " → ".join(str(s) for s in seq))
+        await interaction.followup.send(content=f"{header}🔢 **{content.get('prompt', 'Complete the pattern:')}**\n" + " → ".join(str(s) for s in seq))
         await view.run(interaction, content.get("prompt", "Complete the pattern:"))
         await view.wait()
         return view.result or 0.0
@@ -1504,7 +1511,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = PrecisionView(target, tolerance)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🎯 **{content.get('prompt', 'Stop at the target!')}**\nTarget: {target} (±{tolerance})")
+        await interaction.followup.send(content=f"{header}🎯 **{content.get('prompt', 'Stop at the target!')}**\nTarget: {target} (±{tolerance})")
         asyncio.create_task(view._counter_loop())
         await view.wait()
         return view.result or 0.0
@@ -1516,7 +1523,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view.user_id = user_id
         view.start_time = start_time
         await interaction.followup.send(
-            content=f"🔓 **{content.get('prompt', 'Crack the combination lock!')}**\nUse the buttons to set each pin, then click Unlock.\nPins: {len(pins)} | Range: 0-{max_val}",
+            content=f"{header}🔓 **{content.get('prompt', 'Crack the combination lock!')}**\nUse the buttons to set each pin, then click Unlock.\nPins: {len(pins)} | Range: 0-{max_val}",
             view=view,
         )
         await view.wait()
@@ -1527,7 +1534,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = SpeedRunView(tasks)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"⚡ **{content.get('prompt', 'Complete all tasks fast!')}**\nClick each task button as it appears!", view=view)
+        await interaction.followup.send(content=f"{header}⚡ **{content.get('prompt', 'Complete all tasks fast!')}**\nClick each task button as it appears!", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1536,7 +1543,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = AssemblyView(parts)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🔧 **{content.get('prompt', 'Assemble in the correct order!')}**\nSelect parts in dependency order:", view=view)
+        await interaction.followup.send(content=f"{header}🔧 **{content.get('prompt', 'Assemble in the correct order!')}**\nSelect parts in dependency order:", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1546,7 +1553,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view.user_id = user_id
         view.start_time = start_time
         await interaction.followup.send(
-            content=f"⌨️ **{content.get('prompt', 'Type the phrase fast and accurately!')}**\n```\n{phrase}\n```",
+            content=f"{header}⌨️ **{content.get('prompt', 'Type the phrase fast and accurately!')}**\n```\n{phrase}\n```",
             view=view,
         )
         await view.wait()
@@ -1558,7 +1565,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = MathView(answer, formula)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🧮 **{content.get('prompt', 'Solve the math problem:')}**")
+        await interaction.followup.send(content=f"{header}🧮 **{content.get('prompt', 'Solve the math problem:')}**")
         await view.wait()
         return view.result or 0.0
 
@@ -1568,7 +1575,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = FillBlankView(answer, context)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"✍️ **{content.get('prompt', 'Fill in the blank:')}**")
+        await interaction.followup.send(content=f"{header}✍️ **{content.get('prompt', 'Fill in the blank:')}**")
         await view.wait()
         return view.result or 0.0
 
@@ -1579,7 +1586,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = BudgetView(categories, budget, optimal)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"💰 **{content.get('prompt', 'Allocate the budget:')}**\nTotal budget: ${budget:,}")
+        await interaction.followup.send(content=f"{header}💰 **{content.get('prompt', 'Allocate the budget:')}**\nTotal budget: ${budget:,}")
         await view.wait()
         return view.result or 0.0
 
@@ -1589,7 +1596,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = RoutePlanView(stops, optimal)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🗺️ **{content.get('prompt', 'Plan the best route!')}**\nClick stops in the most efficient order:", view=view)
+        await interaction.followup.send(content=f"{header}🗺️ **{content.get('prompt', 'Plan the best route!')}**\nClick stops in the most efficient order:", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1599,7 +1606,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = RecipeBuildView(ingredients, order)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"👨‍🍳 **{content.get('prompt', 'Build the recipe in order!')}**\nClick ingredients in the correct sequence:", view=view)
+        await interaction.followup.send(content=f"{header}👨‍🍳 **{content.get('prompt', 'Build the recipe in order!')}**\nClick ingredients in the correct sequence:", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1609,7 +1616,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = ShiftSimView(situations, optimal)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"📋 **{content.get('prompt', 'Handle situations in priority order!')}**\nClick by priority:", view=view)
+        await interaction.followup.send(content=f"{header}📋 **{content.get('prompt', 'Handle situations in priority order!')}**\nClick by priority:", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1619,7 +1626,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = TriageView(patients, optimal)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🏥 **{content.get('prompt', 'Triage patients by priority!')}**\nClick patients in treatment order:", view=view)
+        await interaction.followup.send(content=f"{header}🏥 **{content.get('prompt', 'Triage patients by priority!')}**\nClick patients in treatment order:", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1629,7 +1636,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = DiagnosisView(content.get("prompt", "Diagnose the patient:"), options, correct, content.get("reasoning", ""))
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🩺 **{content.get('prompt', 'Diagnose the patient:')}**")
+        await interaction.followup.send(content=f"{header}🩺 **{content.get('prompt', 'Diagnose the patient:')}**")
         await view.wait()
         return view.result or 0.0
 
@@ -1639,7 +1646,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = NegotiationView(content.get("prompt", "Negotiate:"), options, correct, content.get("explanation", ""))
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🤝 **{content.get('prompt', 'Negotiate the best outcome:')}**")
+        await interaction.followup.send(content=f"{header}🤝 **{content.get('prompt', 'Negotiate the best outcome:')}**")
         await view.wait()
         return view.result or 0.0
 
@@ -1649,7 +1656,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = CategorizeView(items, categories)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🏷️ **{content.get('prompt', 'Classify each item:')}**", view=view)
+        await interaction.followup.send(content=f"{header}🏷️ **{content.get('prompt', 'Classify each item:')}**", view=view)
         await view.wait()
         return view.result or 0.0
 
@@ -1658,7 +1665,7 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = MultiStageView(stages)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"🎭 **{content.get('prompt', 'Multi-stage challenge!')}**\nComplete each stage in sequence...")
+        await interaction.followup.send(content=f"{header}🎭 **{content.get('prompt', 'Multi-stage challenge!')}**\nComplete each stage in sequence...")
         await view.run_stage(interaction)
         await view.wait()
         return view.result or 0.0
@@ -1670,6 +1677,6 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
         view = QuickPickView(content.get("prompt", "Pick the correct answer:"), options, correct)
         view.user_id = user_id
         view.start_time = start_time
-        await interaction.followup.send(content=f"❓ **{content.get('prompt', 'Pick the correct answer:')}**", view=view)
+        await interaction.followup.send(content=f"{header}❓ **{content.get('prompt', 'Pick the correct answer:')}**", view=view)
         await view.wait()
         return view.result or 0.0
