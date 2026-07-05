@@ -51,7 +51,7 @@ Lifebot/
 ├── cogs/                # Discord command cogs (modular feature groups)
 │   ├── economy.py       # Balance, deposit, withdraw, pay, leaderboard
 │   ├── jobs.py          # Jobs, work
-│   ├── gambling.py      # Coinflip, dice, slots, blackjack, roulette
+│   ├── gambling.py      # Coinflip, dice, slots, blackjack, higherlower, crash, horse_race, roulette, keno, lucky_wheel, plinko, overunder, mystery_box
 │   ├── store.py         # Interactive shop (Views/Buttons), buy, use, sell, equipment, special deals
 │   ├── survival.py      # Status, hospital, heal, sleep, shower, stat decay
 │   ├── leveling.py      # Rank, level rewards
@@ -81,7 +81,7 @@ Lifebot/
 - 3 minigames per job (randomly selected each shift, category-themed)
 - 24 minigame types with job-specific themed content
 - 2-slot job system with stat/qual requirements, XP, and cooldowns
-- Gambling: coinflip, dice, slots, blackjack, roulette
+- Gambling: coinflip, dice, slots, blackjack, higherlower, crash, horse_race, roulette, keno, lucky_wheel, plinko, overunder, mystery_box
 
 ### Survival Stats
 - Health, hunger, thirst, energy, hygiene

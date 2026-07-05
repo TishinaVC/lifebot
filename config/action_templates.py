@@ -160,6 +160,99 @@ ACTION_TEMPLATES = {
             "{result_text}\nNo winner, no loser. Your bet is safe.",
             "{result_text}\nStandoff at the table. Your money is returned.",
         ],
+        "higherlower_win": [
+            "{result_text}\nYou won {winnings}!\nWallet: {wallet}",
+            "{result_text}\nThe cards favored you! You take {winnings}.\nWallet: {wallet}",
+            "{result_text}\nA great run pays off — {winnings} added to your wallet.\nWallet: {wallet}",
+        ],
+        "higherlower_loss": [
+            "{result_text}\nYou lost {bet}.\nWallet: {wallet}",
+            "{result_text}\nThe cards didn't go your way. {bet} lost.\nWallet: {wallet}",
+            "{result_text}\nWrong call. You lose {bet}.\nWallet: {wallet}",
+        ],
+        "crash_win": [
+            "{result_text}\nYou won {winnings}!\nWallet: {wallet}",
+            "{result_text}\nYou pulled out at the perfect time! {winnings} secured.\nWallet: {wallet}",
+            "{result_text}\nSafe landing — {winnings} in your pocket.\nWallet: {wallet}",
+        ],
+        "crash_loss": [
+            "{result_text}\nYou lost {bet}.\nWallet: {wallet}",
+            "{result_text}\nThe rocket went down with your bet. {bet} lost.\nWallet: {wallet}",
+            "{result_text}\nToo greedy! You lost {bet}.\nWallet: {wallet}",
+        ],
+        "horse_race_win": [
+            "{result_text}\nYou won {winnings}!\nWallet: {wallet}",
+            "{result_text}\nYour horse crossed the line first! Payout: {winnings}.\nWallet: {wallet}",
+            "{result_text}\nA winning pick! {winnings} added to your wallet.\nWallet: {wallet}",
+        ],
+        "horse_race_loss": [
+            "{result_text}\nYou lost {bet}.\nWallet: {wallet}",
+            "{result_text}\nYour horse fell behind. {bet} lost.\nWallet: {wallet}",
+            "{result_text}\nNot your race today. {bet} gone.\nWallet: {wallet}",
+        ],
+        "keno_win": [
+            "{result_text}\nYou won {winnings}!\nWallet: {wallet}",
+            "{result_text}\nThe numbers aligned! Payout: {winnings}.\nWallet: {wallet}",
+            "{result_text}\nLucky picks pay off — {winnings} added to your wallet.\nWallet: {wallet}",
+            "{result_text}\nKeno glory! You take home {winnings}.\nWallet: {wallet}",
+        ],
+        "keno_loss": [
+            "{result_text}\nYou lost {bet}.\nWallet: {wallet}",
+            "{result_text}\nThe draw wasn't kind. {bet} lost.\nWallet: {wallet}",
+            "{result_text}\nNo matches this round. {bet} gone.\nWallet: {wallet}",
+        ],
+        "lucky_wheel_win": [
+            "{result_text}\nYou won {winnings}!\nWallet: {wallet}",
+            "{result_text}\nThe wheel favored you! Payout: {winnings}.\nWallet: {wallet}",
+            "{result_text}\nA lucky spin! {winnings} is yours.\nWallet: {wallet}",
+            "{result_text}\nFortune smiles on you — {winnings} added.\nWallet: {wallet}",
+        ],
+        "lucky_wheel_loss": [
+            "{result_text}\nYou lost {bet}.\nWallet: {wallet}",
+            "{result_text}\nThe wheel was cruel. {bet} lost.\nWallet: {wallet}",
+            "{result_text}\nNot your spin today. {bet} gone.\nWallet: {wallet}",
+        ],
+        "plinko_win": [
+            "{result_text}\nYou won {winnings}!\nWallet: {wallet}",
+            "{result_text}\nThe chip found its way to a good slot! Payout: {winnings}.\nWallet: {wallet}",
+            "{result_text}\nA lucky bounce! {winnings} is yours.\nWallet: {wallet}",
+        ],
+        "plinko_loss": [
+            "{result_text}\nYou lost {bet}.\nWallet: {wallet}",
+            "{result_text}\nThe chip settled in the wrong spot. {bet} lost.\nWallet: {wallet}",
+            "{result_text}\nCenter slot — the house's favorite. {bet} gone.\nWallet: {wallet}",
+        ],
+        "overunder_win": [
+            "{result_text}\nYou won {winnings}!\nWallet: {wallet}",
+            "{result_text}\nThe dice rolled in your favor! Payout: {winnings}.\nWallet: {wallet}",
+            "{result_text}\nA perfect roll! {winnings} is yours.\nWallet: {wallet}",
+        ],
+        "overunder_loss": [
+            "{result_text}\nYou lost {bet}.\nWallet: {wallet}",
+            "{result_text}\nThe dice didn't cooperate. {bet} lost.\nWallet: {wallet}",
+            "{result_text}\nWrong side of seven. {bet} gone.\nWallet: {wallet}",
+        ],
+        "mystery_box_win": [
+            "{result_text}\nYou won {winnings}!\nWallet: {wallet}",
+            "{result_text}\nThe box held treasure! Payout: {winnings}.\nWallet: {wallet}",
+            "{result_text}\nA great pick! {winnings} is yours.\nWallet: {wallet}",
+            "{result_text}\nMystery revealed — and it paid off! {winnings} added.\nWallet: {wallet}",
+        ],
+        "mystery_box_loss": [
+            "{result_text}\nYou lost {bet}.\nWallet: {wallet}",
+            "{result_text}\nThe box was empty. {bet} lost.\nWallet: {wallet}",
+            "{result_text}\nBad luck — the box held nothing. {bet} gone.\nWallet: {wallet}",
+        ],
+        "roulette_win": [
+            "{result_text}\nYou won {winnings}!\nWallet: {wallet}",
+            "{result_text}\nThe wheel favored you! Payout: {winnings}.\nWallet: {wallet}",
+            "{result_text}\nA lucky spin! {winnings} is yours.\nWallet: {wallet}",
+        ],
+        "roulette_loss": [
+            "{result_text}\nYou lost {bet}.\nWallet: {wallet}",
+            "{result_text}\nThe ball didn't land your way. {bet} lost.\nWallet: {wallet}",
+            "{result_text}\nWrong pocket. {bet} gone.\nWallet: {wallet}",
+        ],
     },
 
     # ═══════════════════════════════════════════════════════════════

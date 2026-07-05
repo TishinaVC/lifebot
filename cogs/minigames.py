@@ -234,7 +234,6 @@ class SequenceView(discord.ui.View):
             self.selected.append(item)
             btn.disabled = True
             btn.style = discord.ButtonStyle.success
-            await interaction.response.edit_message(view=self)
 
             if len(self.selected) == len(self.correct_order):
                 elapsed = time.time() - self.start_time
@@ -242,7 +241,15 @@ class SequenceView(discord.ui.View):
                 accuracy = correct / len(self.correct_order)
                 speed_bonus = max(0, 1.0 - elapsed / 45.0) * 0.3
                 self.result = min(1.0, accuracy * 0.7 + speed_bonus)
+                for child in self.children:
+                    child.disabled = True
+                await interaction.response.edit_message(
+                    content=f"✅ **Complete!** Time: {elapsed:.1f}s | Accuracy: {int(accuracy * 100)}% | Score: {int(self.result * 100)}%",
+                    view=self
+                )
                 self.stop()
+            else:
+                await interaction.response.edit_message(view=self)
         return callback
 
     async def on_timeout(self):
@@ -280,14 +287,21 @@ class SortView(discord.ui.View):
                 return
             select = self.children[idx]
             self.user_answers[item] = select.values[0]
-            await interaction.response.edit_message(view=self)
             if len(self.user_answers) == len(self.items):
                 elapsed = time.time() - self.start_time
                 correct = sum(1 for i, item in enumerate(self.items) if self.user_answers.get(item) == self.categories[i])
                 accuracy = correct / len(self.items)
                 speed_bonus = max(0, 1.0 - elapsed / 50.0) * 0.2
                 self.result = min(1.0, accuracy * 0.8 + speed_bonus)
+                for child in self.children:
+                    child.disabled = True
+                await interaction.response.edit_message(
+                    content=f"✅ **Complete!** Time: {elapsed:.1f}s | Accuracy: {int(accuracy * 100)}% | Score: {int(self.result * 100)}%",
+                    view=self
+                )
                 self.stop()
+            else:
+                await interaction.response.edit_message(view=self)
         return callback
 
     async def on_timeout(self):
@@ -331,7 +345,10 @@ class QuickPickView(discord.ui.View):
                     child.style = discord.ButtonStyle.success
                 elif child.label == option[:80]:
                     child.style = discord.ButtonStyle.danger
-            await interaction.response.edit_message(view=self)
+            await interaction.response.edit_message(
+                content=f"{'✅ Correct!' if option == self.correct else '❌ Wrong!'} Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
+                view=self
+            )
             self.stop()
         return callback
 
@@ -383,7 +400,7 @@ class MemoryView(discord.ui.View):
                     self.result = min(1.0, 0.7 + speed_bonus)
                     for child in self.children:
                         child.disabled = True
-                    await interaction.response.edit_message(content="✅ **Perfect memory!**", view=self)
+                    await interaction.response.edit_message(content=f"✅ **Perfect memory!** Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%", view=self)
                     self.stop()
                 else:
                     await interaction.response.edit_message(view=self)
@@ -391,7 +408,7 @@ class MemoryView(discord.ui.View):
                 self.result = 0.2
                 for child in self.children:
                     child.disabled = True
-                await interaction.response.edit_message(content="❌ **Wrong sequence!**", view=self)
+                await interaction.response.edit_message(content=f"❌ **Wrong sequence!** Score: {int(self.result * 100)}%", view=self)
                 self.stop()
         return callback
 
@@ -448,10 +465,11 @@ class TimingView(discord.ui.View):
         self._target_end = self._target_start + random.uniform(0.1, 0.2)
 
         if self.current_beat >= self.beats:
+            elapsed = time.time() - self.start_time
             self.result = sum(self.scores) / len(self.scores) if self.scores else 0.0
             for child in self.children:
                 child.disabled = True
-            await interaction.response.edit_message(content=f"⏱️ **Timing complete!** Score: {int(self.result * 100)}%", view=self)
+            await interaction.response.edit_message(content=f"⏱️ **Timing complete!** Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%", view=self)
             self.stop()
         else:
             bar = self._render_bar()
@@ -513,14 +531,21 @@ class MatchPairsView(discord.ui.View):
                 if isinstance(child, discord.ui.Select) and child.placeholder == f"Match: {left[:50]}":
                     self.answers[left] = child.values[0]
                     break
-            await interaction.response.edit_message(view=self)
             if len(self.answers) == len(self.left_items):
                 elapsed = time.time() - self.start_time
                 correct = sum(1 for l, r in self.pairs if self.answers.get(l) == r)
                 accuracy = correct / len(self.pairs)
                 speed_bonus = max(0, 1.0 - elapsed / 35.0) * 0.2
                 self.result = min(1.0, accuracy * 0.8 + speed_bonus)
+                for child in self.children:
+                    child.disabled = True
+                await interaction.response.edit_message(
+                    content=f"✅ **Complete!** Time: {elapsed:.1f}s | Accuracy: {int(accuracy * 100)}% | Score: {int(self.result * 100)}%",
+                    view=self
+                )
                 self.stop()
+            else:
+                await interaction.response.edit_message(view=self)
         return callback
 
     async def on_timeout(self):
@@ -565,7 +590,10 @@ class SpotErrorView(discord.ui.View):
                     child.style = discord.ButtonStyle.success
                 elif child.custom_id == f"se_{idx}":
                     child.style = discord.ButtonStyle.danger
-            await interaction.response.edit_message(view=self)
+            await interaction.response.edit_message(
+                content=f"{'✅ Found it!' if idx in self._diff_indices else '❌ Wrong!'} Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
+                view=self
+            )
             self.stop()
         return callback
 
@@ -599,7 +627,12 @@ class PatternView(discord.ui.View):
                 self.result = min(1.0, 0.7 + speed_bonus)
             else:
                 self.result = 0.2
-            await modal_interaction.response.edit_message(view=self)
+            for child in self.children:
+                child.disabled = True
+            await modal_interaction.response.edit_message(
+                content=f"{'✅ Correct!' if user_answer == str(self.answer).strip().lower() else '❌ Wrong!'} Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
+                view=self
+            )
             self.stop()
 
         modal.on_submit = on_submit
@@ -649,10 +682,11 @@ class PrecisionView(discord.ui.View):
             self.result = 0.4
         else:
             self.result = 0.1
+        elapsed = time.time() - self.start_time
         for child in self.children:
             child.disabled = True
         await interaction.response.edit_message(
-            content=f"🎯 Target: {self.target} | You hit: {self.current:.1f} | Score: {int(self.result * 100)}%",
+            content=f"🎯 Target: {self.target} | You hit: {self.current:.1f} | Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
             view=self,
         )
         self.stop()
@@ -694,7 +728,7 @@ class ComboLockView(discord.ui.View):
         for child in self.children:
             child.disabled = True
         await interaction.response.edit_message(
-            content=f"🔓 Correct: {self.pins} | You entered: {self.current} | Score: {int(self.result * 100)}%",
+            content=f"🔓 Correct: {self.pins} | You entered: {self.current} | Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
             view=self,
         )
         self.stop()
@@ -738,7 +772,7 @@ class SpeedRunView(discord.ui.View):
             elapsed = time.time() - self.start_time
             speed_bonus = max(0, 1.0 - elapsed / (len(self.tasks) * 3.0)) * 0.4
             self.result = min(1.0, 0.6 + speed_bonus)
-            await interaction.response.edit_message(content=f"⚡ **All tasks done!** Score: {int(self.result * 100)}%", view=None)
+            await interaction.response.edit_message(content=f"⚡ **All tasks done!** Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%", view=None)
             self.stop()
         else:
             self._show_next()
@@ -804,7 +838,7 @@ class AssemblyView(discord.ui.View):
                 elapsed = time.time() - self.start_time
                 speed_bonus = max(0, 1.0 - elapsed / 35.0) * 0.2
                 self.result = min(1.0, 0.8 + speed_bonus)
-                await interaction.response.edit_message(content=f"🔧 **Assembly complete!** Score: {int(self.result * 100)}%", view=None)
+                await interaction.response.edit_message(content=f"🔧 **Assembly complete!** Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%", view=None)
                 self.stop()
             else:
                 self._build_select()
@@ -814,7 +848,7 @@ class AssemblyView(discord.ui.View):
                 )
         else:
             self.result = 0.3
-            await interaction.response.edit_message(content="❌ Wrong part order!", view=None)
+            await interaction.response.edit_message(content="❌ Wrong part order! Score: 30%", view=None)
             self.stop()
 
     async def on_timeout(self):
@@ -864,7 +898,7 @@ class TypingRaceView(discord.ui.View):
             for child in self.children:
                 child.disabled = True
             await modal_interaction.response.edit_message(
-                content=f"⌨️ **Accuracy: {int(accuracy * 100)}%** | Score: {int(self.result * 100)}%",
+                content=f"⌨️ **Accuracy: {int(accuracy * 100)}%** | Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
                 view=self,
             )
             self.stop()
@@ -918,7 +952,7 @@ class MathView(discord.ui.View):
             for child in self.children:
                 child.disabled = True
             await modal_interaction.response.edit_message(
-                content=f"🧮 Answer: {self.answer} | You: {text_input.value} | Score: {int(self.result * 100)}%",
+                content=f"🧮 Answer: {self.answer} | You: {text_input.value} | Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
                 view=self,
             )
             self.stop()
@@ -971,7 +1005,7 @@ class FillBlankView(discord.ui.View):
             for child in self.children:
                 child.disabled = True
             await modal_interaction.response.edit_message(
-                content=f"✍️ Answer: '{self.answer}' | You: '{text_input.value}' | Score: {int(self.result * 100)}%",
+                content=f"✍️ Answer: '{self.answer}' | You: '{text_input.value}' | Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
                 view=self,
             )
             self.stop()
@@ -1020,8 +1054,8 @@ class BudgetView(discord.ui.View):
                 if isinstance(child, discord.ui.Select) and child.placeholder == f"Allocate for: {cat}":
                     self.allocations[cat] = int(child.values[0])
                     break
-            await interaction.response.edit_message(view=self)
             if len(self.allocations) == len(self.categories):
+                elapsed = time.time() - self.start_time
                 total = sum(self.allocations.values())
                 if total > self.budget:
                     self.result = 0.2
@@ -1034,7 +1068,15 @@ class BudgetView(discord.ui.View):
                             ratio = min(actual, opt) / max(actual, opt, 1)
                             score += ratio
                     self.result = min(1.0, score / len(self.categories))
+                for child in self.children:
+                    child.disabled = True
+                await interaction.response.edit_message(
+                    content=f"✅ **Budget complete!** Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
+                    view=self
+                )
                 self.stop()
+            else:
+                await interaction.response.edit_message(view=self)
         return callback
 
     async def on_timeout(self):
@@ -1071,14 +1113,21 @@ class RoutePlanView(discord.ui.View):
             self.selected.append(stop)
             btn.disabled = True
             btn.style = discord.ButtonStyle.success
-            await interaction.response.edit_message(view=self)
             if len(self.selected) == len(self.optimal):
                 elapsed = time.time() - self.start_time
                 correct = sum(1 for i, s in enumerate(self.selected) if i < len(self.optimal) and s == self.optimal[i])
                 accuracy = correct / len(self.optimal)
                 speed_bonus = max(0, 1.0 - elapsed / 30.0) * 0.2
                 self.result = min(1.0, accuracy * 0.8 + speed_bonus)
+                for child in self.children:
+                    child.disabled = True
+                await interaction.response.edit_message(
+                    content=f"✅ **Route complete!** Time: {elapsed:.1f}s | Accuracy: {int(accuracy * 100)}% | Score: {int(self.result * 100)}%",
+                    view=self
+                )
                 self.stop()
+            else:
+                await interaction.response.edit_message(view=self)
         return callback
 
     async def on_timeout(self):
@@ -1115,14 +1164,21 @@ class RecipeBuildView(discord.ui.View):
             self.selected.append(ing)
             btn.disabled = True
             btn.style = discord.ButtonStyle.success
-            await interaction.response.edit_message(view=self)
             if len(self.selected) == len(self.order):
                 elapsed = time.time() - self.start_time
                 correct = sum(1 for i, s in enumerate(self.selected) if i < len(self.order) and s == self.order[i])
                 accuracy = correct / len(self.order)
                 speed_bonus = max(0, 1.0 - elapsed / 30.0) * 0.2
                 self.result = min(1.0, accuracy * 0.8 + speed_bonus)
+                for child in self.children:
+                    child.disabled = True
+                await interaction.response.edit_message(
+                    content=f"✅ **Recipe complete!** Time: {elapsed:.1f}s | Accuracy: {int(accuracy * 100)}% | Score: {int(self.result * 100)}%",
+                    view=self
+                )
                 self.stop()
+            else:
+                await interaction.response.edit_message(view=self)
         return callback
 
     async def on_timeout(self):
@@ -1159,14 +1215,21 @@ class ShiftSimView(discord.ui.View):
             self.selected.append(sit)
             btn.disabled = True
             btn.style = discord.ButtonStyle.success
-            await interaction.response.edit_message(view=self)
             if len(self.selected) == len(self.optimal):
                 elapsed = time.time() - self.start_time
                 correct = sum(1 for i, s in enumerate(self.selected) if i < len(self.optimal) and s == self.optimal[i])
                 accuracy = correct / len(self.optimal)
                 speed_bonus = max(0, 1.0 - elapsed / 35.0) * 0.2
                 self.result = min(1.0, accuracy * 0.8 + speed_bonus)
+                for child in self.children:
+                    child.disabled = True
+                await interaction.response.edit_message(
+                    content=f"✅ **Shift complete!** Time: {elapsed:.1f}s | Accuracy: {int(accuracy * 100)}% | Score: {int(self.result * 100)}%",
+                    view=self
+                )
                 self.stop()
+            else:
+                await interaction.response.edit_message(view=self)
         return callback
 
     async def on_timeout(self):
@@ -1203,14 +1266,21 @@ class TriageView(discord.ui.View):
             self.selected.append(patient)
             btn.disabled = True
             btn.style = discord.ButtonStyle.success
-            await interaction.response.edit_message(view=self)
             if len(self.selected) == len(self.optimal):
                 elapsed = time.time() - self.start_time
                 correct = sum(1 for i, s in enumerate(self.selected) if i < len(self.optimal) and s == self.optimal[i])
                 accuracy = correct / len(self.optimal)
                 speed_bonus = max(0, 1.0 - elapsed / 30.0) * 0.2
                 self.result = min(1.0, accuracy * 0.8 + speed_bonus)
+                for child in self.children:
+                    child.disabled = True
+                await interaction.response.edit_message(
+                    content=f"✅ **Triage complete!** Time: {elapsed:.1f}s | Accuracy: {int(accuracy * 100)}% | Score: {int(self.result * 100)}%",
+                    view=self
+                )
                 self.stop()
+            else:
+                await interaction.response.edit_message(view=self)
         return callback
 
     async def on_timeout(self):
@@ -1255,7 +1325,10 @@ class DiagnosisView(discord.ui.View):
                     child.style = discord.ButtonStyle.success
                 elif child.label == option[:80]:
                     child.style = discord.ButtonStyle.danger
-            await interaction.response.edit_message(view=self)
+            await interaction.response.edit_message(
+                content=f"{'✅ Correct diagnosis!' if option == self.correct else '❌ Wrong diagnosis!'} Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
+                view=self
+            )
             self.stop()
         return callback
 
@@ -1301,7 +1374,10 @@ class NegotiationView(discord.ui.View):
                     child.style = discord.ButtonStyle.success
                 elif child.label == option[:80]:
                     child.style = discord.ButtonStyle.danger
-            await interaction.response.edit_message(view=self)
+            await interaction.response.edit_message(
+                content=f"{'✅ Great negotiation!' if option == self.correct else '❌ Wrong choice!'} Time: {elapsed:.1f}s | Score: {int(self.result * 100)}%",
+                view=self
+            )
             self.stop()
         return callback
 
@@ -1344,14 +1420,21 @@ class CategorizeView(discord.ui.View):
                 if isinstance(child, discord.ui.Select) and child.placeholder == f"Classify: {item[:50]}":
                     self.answers[item] = child.values[0]
                     break
-            await interaction.response.edit_message(view=self)
             if len(self.answers) == len(self.items):
                 elapsed = time.time() - self.start_time
                 correct = sum(1 for i, item in enumerate(self.items) if self.answers.get(item) == self.categories[i])
                 accuracy = correct / len(self.items)
                 speed_bonus = max(0, 1.0 - elapsed / 40.0) * 0.2
                 self.result = min(1.0, accuracy * 0.8 + speed_bonus)
+                for child in self.children:
+                    child.disabled = True
+                await interaction.response.edit_message(
+                    content=f"✅ **Complete!** Time: {elapsed:.1f}s | Accuracy: {int(accuracy * 100)}% | Score: {int(self.result * 100)}%",
+                    view=self
+                )
                 self.stop()
+            else:
+                await interaction.response.edit_message(view=self)
         return callback
 
     async def on_timeout(self):
@@ -1372,7 +1455,14 @@ class MultiStageView(discord.ui.View):
 
     async def run_stage(self, interaction: discord.Interaction):
         if self.current_stage >= len(self.stages):
+            elapsed = time.time() - self.start_time
             self.result = sum(self.scores) / len(self.scores) if self.scores else 0.0
+            try:
+                await interaction.followup.send(
+                    content=f"📊 **All stages complete!** Time: {elapsed:.1f}s | Avg Score: {int(self.result * 100)}%"
+                )
+            except discord.HTTPException:
+                pass
             self.stop()
             return
 
@@ -1674,8 +1764,10 @@ async def _dispatch_minigame(interaction: discord.Interaction, mg_type: str, con
 
     elif mg_type == "categorize":
         items = content.get("items", [])
-        categories = content.get("categories", [])
-        view = CategorizeView(items, categories)
+        # item_categories is the per-item correct category; fall back to categories for old content
+        item_cats = content.get("item_categories", content.get("categories", []))
+        unique_cats = content.get("categories", list(set(item_cats)))
+        view = CategorizeView(items, item_cats)
         view.user_id = user_id
         view.display_name = display_name
         view.start_time = start_time

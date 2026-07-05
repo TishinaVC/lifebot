@@ -9,6 +9,7 @@ from config import (
     HOUSING_TIERS, TOOLS, CLOTHING, POSSESSIONS, BUFF_TYPES,
     FACTIONS, TIME_PERIODS, WEATHER_STATES, JOBS,
 )
+from config.jobs import JOB_CATEGORIES
 
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 GITHUB_REPO = os.getenv("GITHUB_REPO", "TishinaVC/lifebot")
@@ -30,7 +31,7 @@ class Core(commands.Cog):
         categories = {
             "💰 Economy": "`/balance` `/deposit` `/withdraw` `/pay` `/leaderboard` `/upgrade_bank`",
             "💼 Jobs (3 slots)": "`/jobs` `/job set` `/job view` `/job quit` `/work` `/coop` `/jobrep` — Browse categories → subcategories → jobs interactively! Co-op shifts, grades, streaks, boss shifts, and per-category reputation!",
-            "🎰 Gambling": "`/coinflip` `/dice` `/slots` `/blackjack` `/roulette`",
+            "🎰 Gambling": "`/coinflip` `/dice` `/slots` `/blackjack` `/higherlower` `/crash` `/horse_race` `/roulette` `/keno` `/lucky_wheel` `/plinko` `/overunder` `/mystery_box`",
             "🛒 Store": "`/shop` `/buy` `/inventory` `/use` `/sell` `/collectibles` `/buy_equipment` `/sell_equipment` — Autocomplete for items!",
             "⛏️ Activities": "`/activity` (fish/mine/explore/forage/chop/dig) `/craft` `/craft_list`",
             "🎒 Equipment": "`/equipment` `/equip` `/unequip` `/discoveries`",

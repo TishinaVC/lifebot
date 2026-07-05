@@ -341,3 +341,57 @@ Each job in config gets:
 
 ### Still Pending:
 - (None — all systems complete)
+
+---
+
+## Gambling Expansion (Casino Machine Games)
+
+### Completed:
+- [x] Blackjack fix — interaction defer, push bet return, message edit lifecycle
+- [x] Higher/Lower — card prediction with escalating multiplier, cash-out button
+- [x] Crash — live rocket multiplier with real-time embed updates, cash-out race
+- [x] Horse Race — 4-horse pick with 4x payout, themed horse names/emojis
+
+### In Progress:
+
+#### 1. Keno (`/keno`) ✅
+- **Mechanic**: Pick 2–8 numbers from 1–20. Bot draws 10 random numbers. Payout based on how many you matched.
+- **Payout table**: scales with pick count and match count (e.g. pick 8, match 8 = 100x; pick 4, match 4 = 20x)
+- **UX**: Interactive 4×5 number grid (buttons 1–20), selected numbers highlight blue. Draw animation reveals numbers one by one in the embed with 1.2s delay.
+- **Embed**: Gold-themed (0xFFD700), code-block number board with 🎯/🔴/🔵 markers, match counter, payout breakdown, footer legend.
+- **Narrative**: Win/loss templates with match count and payout details.
+
+#### 2. Lucky Wheel (`/lucky_wheel`) ✅
+- **Mechanic**: Pay a fixed entry fee. Spin a wheel with 12 segments. Each segment has a prize (cash, XP, jackpot, nothing, double-or-nothing).
+- **Segment values**: 0x, 0.5x, 1x, 1.5x, 2x, 2x, 3x, 0.5x, 1x, 5x, 0x, 10x (jackpot)
+- **UX**: Animated spin (embed updates showing wheel rotation), final result with segment highlighted.
+- **Embed**: Colorful wheel display with emoji segments, spin animation, result reveal.
+- **Narrative**: Spin result templates with suspense and celebration variants.
+
+#### 3. Plinko (`/plinko`) ✅
+- **Mechanic**: Drop a chip down a pegboard with 8 rows. Chip bounces left/right randomly at each row. Lands in one of 9 slots.
+- **Slot multipliers**: [5x, 2x, 1x, 0.5x, 0.2x, 0.5x, 1x, 2x, 5x] (bell curve distribution)
+- **UX**: Animated drop — embed shows chip position at each row, row by row.
+- **Embed**: ASCII/emoji pegboard display, chip path visualization, final slot highlight.
+- **Narrative**: Drop commentary templates with tension and result.
+
+#### 4. Over/Under Dice (`/overunder`) ✅
+- **Mechanic**: Two dice rolled. Bet on whether the sum is over 7, under 7, exactly 7, or a specific sum (2–12).
+- **Payouts**: Over/Under = 1.95x, Exactly 7 = 5x, Specific sum = varies (2=30x, 3=17x, ... 7=5x, ... 12=30x)
+- **UX**: Choice via slash command options. Animated dice roll in embed (3 frames showing dice tumbling).
+- **Embed**: Dice face display (emoji), sum visualization, payout table reference.
+- **Narrative**: Roll result templates with dice sum and outcome.
+
+#### 5. Mystery Box (`/mystery_box`) ✅
+- **Mechanic**: Pay a fixed price. Open one of three mystery boxes. Each box contains a random prize.
+- **Prize pool**: Cash (common), XP (common), Item (uncommon), Jackpot (rare), Nothing (uncommon), Double bet (common)
+- **UX**: Three box buttons (🎁🎁🎁). Click one to reveal. Other boxes reveal what you didn't pick.
+- **Embed**: Box selection display, reveal animation, "what could have been" display.
+- **Narrative**: Reveal templates with surprise, regret, and celebration variants.
+
+#### 6. Roulette Board Expansion ✅
+- **New bet types**: Even/Odd, High (19–36)/Low (1–18), Dozens (1–12, 13–24, 25–36), Columns
+- **Payouts**: Even/Odd/High/Low = 1.95x, Dozens/Columns = 2.9x
+- **UX**: Expanded slash command choices. Animated wheel spin in embed.
+- **Embed**: Wheel display with ball position, bet type highlighted, result.
+- **Narrative**: Spin templates with ball landing and outcome.
