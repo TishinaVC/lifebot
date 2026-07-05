@@ -395,3 +395,16 @@ Each job in config gets:
 - **UX**: Expanded slash command choices. Animated wheel spin in embed.
 - **Embed**: Wheel display with ball position, bet type highlighted, result.
 - **Narrative**: Spin templates with ball landing and outcome.
+
+#### 7. Multiplayer Poker (`/poker`) ✅
+- **Mechanic**: Texas Hold'em with up to 4 players. 1-minute lobby join window. Continuous hands until players stand up or run out of wallet chips.
+- **Buy-in**: Host sets buy-in amount (min $50). Wallet only — bank money doesn't count.
+- **Blinds**: Low (10/20), Medium (25/50), High (50/100) — host's choice.
+- **Betting**: Fold, Check/Call, Raise (modal input), All In. 30s timeout = auto-fold.
+- **Card Privacy**: Hole cards sent via DM + "My Cards" button (ephemeral). Community cards shown in main embed. Cards only revealed at showdown.
+- **Side Pots**: Proper side pot calculation for all-in scenarios.
+- **Hand Evaluation**: Full 7-card evaluator (Royal Flush through High Card).
+- **Stand Up**: Players can click "Stand Up" to leave after the current hand. Remaining chips returned to wallet.
+- **Continuous Play**: New hands auto-deal with rotating dealer button until <2 players remain.
+- **Embed**: Purple-themed lobby, green during play, gold at showdown. Seat display with stacks, bets, actions, dealer button.
+- **Cog**: Separate `cogs/poker.py` file.

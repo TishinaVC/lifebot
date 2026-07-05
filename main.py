@@ -39,6 +39,7 @@ COGS = [
     "cogs.chase",
     "cogs.stats",
     "cogs.coop",
+    "cogs.poker",
 ]
 
 GUILD_ID = os.getenv("GUILD_ID")
